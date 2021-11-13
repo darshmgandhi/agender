@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+
+</head>
+
+<body>
+    <div class="content">
+
+        <div class="rightSide">
+
+            <div class="forms">
+
+                <form class="radio-checks_folder">
+
+                    <label class="radio-check">
+
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Button">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Form Name
+                    </span>
+                </label>
+
+                    <label class="radio-check">
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Input">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Input
+                    </span>
+                </label>
+
+                    <label class="radio-check">
+
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Radio">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Radio
+                    </span>
+                </label>
+
+                    <label class="radio-check">
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Checkbox">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Checkbox
+                    </span>
+                </label>
+                    <label class="radio-check">
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Image">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Image
+                    </span>
+                </label>
+                </form>
+
+                <div class="inputs_folder">
+
+                    <form class="inputs_names">
+
+                        <label class="value names_label ">
+
+                        <span class="names_span">
+                            Value
+                        </span>
+
+                        <input class="names_input value_text"
+                               type="text" required
+                               placeholder="...enter the text...">
+                    </label>
+
+                        <label class="name names_label">
+
+                        <span class="names_span">
+                            Name
+                        </span>
+
+                        <input class="names_input name_text"
+                               type="text" required
+                               placeholder="...enter the text...">
+                    </label>
+
+                        <label class="placeholder names_label">
+
+                        <span class="names_span">
+                            Placeholder
+                        </span>
+
+                        <input class="names_input placeholder_text"
+                               type="text" required
+                               placeholder="...enter the text...">
+                    </label>
+
+                        <button class="add button" type="submit">
+                        Add
+                    </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="button_folders">
+
+                <button class="generate button" type="submit">
+                Generate
+            </button>
+
+                <button class="reset button" type="submit">
+                Reset
+            </button>
+            </div>
+
+
+
+        </div>
+
+        <div id="results" class="results">
+        </div>
+
+
+
+
+    </div>
+</body>
+
+</html>
