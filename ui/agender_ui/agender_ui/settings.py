@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'agender_ui.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'users',
+        'NAME': 'agender',
     }
 }
 

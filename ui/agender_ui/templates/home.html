@@ -1,0 +1,7 @@
+<h1>Welcome</h1>
+<br>
+<form method="POST" action="/logout">
+	{% csrf_token %}
+	<input class='btn btn-primary btn-large' name="logout" 
+	id="logout" type="submit" value="Logout">
+</form>
