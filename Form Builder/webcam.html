@@ -57,32 +57,33 @@
         <canvas id="canvas" width="300" height="230" padding="10px"></canvas>
     </div>
     <div id="second">
-        <ol align="left">
-            <ol font-weight="20px"> Instructions: </ol><br>
-            <LI> Ensure your Face is well-lit – Avoid low light or light source behind you, </LI>
-            <LI> Ensure your Face occupies most of the capture region</LI>
-            <LI> Look straight into the camera such that entire frontal view of face is clearly visible. </LI>
-            <LI> Ensure face is not covered by object (e.g. Sunglasses).</LI>
-            <LI> Check your picture visible on the photo window </LI>
-            <br>
-            <br>
-            <input type="checkbox" name="cb1" id="terms"> Consent
-            <ol>
-                <li>
-                    I provide my explicit consent to capture my photo for __________.
-                </li>
-                <li>
-                    I understand that, this consent is required for the collection and use of personal data for identified purposes. i.e. analysis.
-                </li>
-                <li>
-                    I understand that my images will not be shared with any third party and will be retained for only as long as is required for the identified purposes
-                </li>
-            </ol><br>
+        <form id="form" method="GET">
+            <ol align="left">
+                <ol font-weight="20px"> Instructions: </ol><br>
+                <LI> Ensure your Face is well-lit – Avoid low light or light source behind you, </LI>
+                <LI> Ensure your Face occupies most of the capture region</LI>
+                <LI> Look straight into the camera such that entire frontal view of face is clearly visible. </LI>
+                <LI> Ensure face is not covered by object (e.g. Sunglasses).</LI>
+                <LI> Check your picture visible on the photo window </LI>
+                <br>
+                <br>
+                <input type="checkbox" name="cb1" id="terms"> Consent
+                <ol>
+                    <li>
+                        I provide my explicit consent to capture my photo for __________.
+                    </li>
+                    <li>
+                        I understand that, this consent is required for the collection and use of personal data for identified purposes. i.e. analysis.
+                    </li>
+                    <li>
+                        I understand that my images will not be shared with any third party and will be retained for only as long as is required for the identified purposes
+                    </li>
+                </ol><br>
+                <input type="hidden" id="img" value="">
+                <input type="button" onClick="submit()" value="Validate" id="SubmitButton">
 
-            <input type="submit" value="Validate" id="SubmitButton">
-
-        </ol>
-
+            </ol>
+        </form>
     </div>
 </body>
 <script>
@@ -103,9 +104,16 @@
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
         let image_data_url = canvas.toDataURL('image/jpeg');
 
+
         // data url of the image
         console.log(image_data_url);
+
     });
+
+    function submit() {
+        document.getElementById("img").setAttribute("value", "image_data_url");
+        document.getElementById("form").submit;
+    }
 </script>
 
 </html>
