@@ -57,7 +57,7 @@ $(document).ready(function() {
         button = `<button>${nameText}</button>` + buttonRemove;
 
         input = `<label>` +
-            `${nameText} <input type="text" placeholder="${placeholderText}">` +
+            `${nameText} <input type="text"  placeholder="${placeholderText}">` +
             buttonRemove;
 
         radio = `<label>` +
@@ -69,7 +69,7 @@ $(document).ready(function() {
             buttonRemove;
 
         file = `<label>` +
-            `${nameText} <input type="file" placeholder="${placeholderText} title="">` +
+            `<a href="webcam.html"> ${nameText} <input type="button" onclick="webcam.html"  title=""> </a>` +
             buttonRemove;
     }
 
