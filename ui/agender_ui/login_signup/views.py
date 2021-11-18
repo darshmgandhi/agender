@@ -160,6 +160,7 @@ def downscale(img):
     # print(img5.size)
 
 
+@login_required(login_url='/signup')
 def image_process(request):
     filename = "IMAGE/image1.jpg"
     img = pyplot.imread(filename)
@@ -178,13 +179,16 @@ def image_process(request):
     return render(request, 'signup.html')
 
 
+@login_required(login_url='/signup')
 def builder(request):
     return render(request, 'builder.html')
 
 
+@login_required(login_url='/signup')
 def form(request):
     return render(request, 'form.html')
 
 
+@login_required(login_url='/signup')
 def webcam(request):
     return render(request, 'webcam.html')
