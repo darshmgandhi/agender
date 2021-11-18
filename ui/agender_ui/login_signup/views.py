@@ -1,3 +1,10 @@
+from matplotlib import pyplot
+import numpy as np
+import cv2
+from PIL import Image
+from mtcnn.mtcnn import MTCNN
+from matplotlib.patches import Circle
+from matplotlib.patches import Rectangle
 from django.conf.urls import url
 from django.shortcuts import render, redirect
 from .models import *
@@ -99,3 +106,85 @@ def new_page(request):
 def logout(request):
     auth_logout(request)
     return redirect('login')
+
+
+def contrast(img):
+    #img = cv2.imread(filename)
+    Y = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # print(np.array(img))
+
+    min = int(np.min(Y))
+    max = int(np.max(Y))
+    contrast = (max-min)/(max+min)
+    return contrast
+
+
+def face_detect(filename, faces, b):
+    data = pyplot.imread(filename)
+    pyplot.imshow(data)
+    ax = pyplot.gca()
+
+    for face in faces:
+        x, y, width, height = face["box"]
+        box = (x, y, width, height)
+        b.append(box)
+        # print(b)
+        rect = Rectangle((x, y), width, height, fill=False, color="red")
+        ax.add_patch(rect)
+        # for key,value in face['keypoints'].items():
+        #   dot=Circle(value,radius=1.5,color="yellow")
+        #  ax.add_patch(dot)
+
+    pyplot.show()
+
+
+def crop(b, filename):
+    img = Image.open(filename)
+    for bb in b:
+        box = bb
+        box = (box[0], box[1], box[2]+box[0], box[3]+box[1])
+        c = img.crop(box)  # (left,upper,right,lower)
+        # print(c.size)
+        # pyplot.imshow(c)
+        c.save(f"IM/cropped_image{box[0]}.jpg")
+        downscale(c)
+
+
+def downscale(img):
+    basewidth = 100
+    wpercent = (basewidth/float(img.size[0]))
+    # print(wpercent)
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img5 = img.resize((basewidth, hsize), Image.ANTIALIAS)
+    img5.save(f"IM/resized_image{img.size[0]}.jpg")
+    # print(img5.size)
+
+
+def image_process(request):
+    filename = "IMAGE/image1.jpg"
+    img = pyplot.imread(filename)
+    thresh = 0.55
+    b = []
+    if(contrast(img) >= thresh):  # contrast checking
+        print("Low Contrast: No")
+        detector = MTCNN()  # face detection
+        faces = detector.detect_faces(img)
+        face_detect(filename, faces, b)
+        # print(b)
+        crop(b, filename)  # cropping
+    else:
+        print("Low Contrast: Yes")
+        pass
+    return render(request, 'signup.html')
+
+
+def builder(request):
+    return render(request, 'builder.html')
+
+
+def form(request):
+    return render(request, 'form.html')
+
+
+def webcam(request):
+    return render(request, 'webcam.html')
