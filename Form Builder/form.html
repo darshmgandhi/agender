@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <title>Form</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        background-color: #6b8bd4;
+        font-family: 'Oswald', sans-serif;
+    }
+    
+    button {
+        size: 20px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-family: 'Oswald', sans-serif;
+        border-radius: 20px;
+    }
+</style>
+
+<body>
+    <h1> Registration form </h1>
+    <form action="/signup" method="post">
+        <p>
+            <label>First name</label><br>
+            <input type="text" name="first_name">
+        </p>
+        <p>
+            <label>Last name</label><br>
+            <input type="text" name="last_name">
+        </p>
+        <p>
+            <label>Address</label><br>
+            <input type="email" name="email" required>
+        </p>
+        <p>
+            <label>Title</label><br>
+            <label>
+            <input type="radio" name="title" value="mr">
+            Mr
+          </label>
+            <label>
+            <input type="radio" name="title" value="mrs">
+            Mrs
+          </label>
+            <label>
+            <input type="radio" name="title" value="miss">
+            Miss
+          </label>
+        </p>
+        <p>
+            Image Validation
+            <a href="webcam.html">
+                <input type="button" value="Validate" id="btncheck">
+            </a>
+        </p>
+        <p>
+            Vehicle:
+            <label>
+            <input type="checkbox" name="Vehicle">
+            Car
+          </label>
+            <label>
+            <input type="checkbox" name="Vehicle">
+            Bike
+          </label>
+            <label>
+            <input type="checkbox" name="Vehicle">
+            Cycle
+          </label>
+        </p>
+        <p>
+            <button>Submit</button>
+        </p>
+    </form>
+</body>
+
+</html>
