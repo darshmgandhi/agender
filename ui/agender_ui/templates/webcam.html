@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        background-color: #6b8bd4;
+        font-family: 'Oswald', sans-serif;
+    }
+    
+    button {
+        size: 20px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-family: 'Oswald', sans-serif;
+        border-radius: 20px;
+    }
+    
+    #first {
+        width: 700px;
+        float: left;
+        height: 700px;
+        background-color: #c8d8fc;
+        margin-left: 50px;
+        margin-top: 10px;
+        border-radius: 20px;
+    }
+    
+    #second {
+        width: 500px;
+        float: right;
+        height: 500px;
+        background-color: #c8d8fc;
+        margin-right: 90px;
+        margin-top: 80px;
+        padding: 50px;
+        border-radius: 20px;
+    }
+    
+    input {
+        text-align: center;
+        background-color: #5286ff;
+        font-family: 'Oswald', sans-serif;
+    }
+</style>
+
+<body>
+    <div id="first">
+        <button id="start-camera">Start Camera</button>
+        <video id="video" width="300" height="400" autoplay></video>
+        <br>
+        <button id="click-photo">Click Photo</button>
+        <canvas id="canvas" width="300" height="230" padding="10px"></canvas>
+    </div>
+    <div id="second">
+        <form id="form" method="GET">
+            <ol align="left">
+                <ol font-weight="20px"> Instructions: </ol><br>
+                <LI> Ensure your Face is well-lit – Avoid low light or light source behind you, </LI>
+                <LI> Ensure your Face occupies most of the capture region</LI>
+                <LI> Look straight into the camera such that entire frontal view of face is clearly visible. </LI>
+                <LI> Ensure face is not covered by object (e.g. Sunglasses).</LI>
+                <LI> Check your picture visible on the photo window </LI>
+                <br>
+                <br>
+                <input type="checkbox" name="checkbox" id="check"> Consent
+                <ol>
+                    <li>
+                        I provide my explicit consent to capture my photo for __________.
+                    </li>
+                    <li>
+                        I understand that, this consent is required for the collection and use of personal data for identified purposes. i.e. analysis.
+                    </li>
+                    <li>
+                        I understand that my images will not be shared with any third party and will be retained for only as long as is required for the identified purposes
+                    </li>
+                </ol><br>
+                <input type="hidden" id="img" value="">
+                <input type="button" onClick="submit()" value="Validate" id="btncheck">
+
+            </ol>
+        </form>
+    </div>
+</body>
+<script>
+    $(function() {
+        var chk = $('#check');
+        var btn = $('#btncheck');
+
+        chk.on('change', function() {
+            btn.prop("disabled", !this.checked); //true: disabled, false: enabled
+        }).trigger('change'); //page load trigger event
+    });
+    let camera_button = document.querySelector("#start-camera");
+    let video = document.querySelector("#video");
+    let click_button = document.querySelector("#click-photo");
+    let canvas = document.querySelector("#canvas");
+
+    camera_button.addEventListener('click', async function() {
+        let stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false
+        });
+        video.srcObject = stream;
+    });
+
+    click_button.addEventListener('click', function() {
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        let image_data_url = canvas.toDataURL('image/jpeg');
+
+
+        // data url of the image
+        console.log(image_data_url);
+
+    });
+
+    function submit() {
+        document.getElementById("img").setAttribute("value", "image_data_url");
+        document.getElementById("form").submit;
+    }
+</script>
+
+</html>

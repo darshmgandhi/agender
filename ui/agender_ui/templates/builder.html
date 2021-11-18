@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="content">
+
+        <div class="rightSide">
+
+            <div class="forms">
+
+                <form class="radio-checks_folder" method="POST">
+
+                    <label class="radio-check">
+
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Button">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Form Name
+                    </span>
+                </label>
+
+                    <label class="radio-check">
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Input">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Input
+                    </span>
+                </label>
+
+                    <label class="radio-check">
+
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Radio">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Radio
+                    </span>
+                </label>
+
+                    <label class="radio-check">
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Checkbox">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Checkbox
+                    </span>
+                </label>
+                    <label class="radio-check">
+                    <input class="radio-check_input-btn"
+                           type="radio" name="type" value="Image">
+
+                    <span class="radio-check_icon-btn"></span>
+
+                    <span class="radio-check_span">
+                        Image 
+                    </span>
+                </label>
+                </form>
+
+                <div class="inputs_folder">
+
+                    <form class="inputs_names">
+
+                        <label class="value names_label ">
+
+                        <span class="names_span">
+                            Value
+                        </span>
+
+                        <input class="names_input value_text"
+                               type="text" required
+                               placeholder="...enter the text...">
+                    </label>
+
+                        <label class="name names_label">
+
+                        <span class="names_span">
+                            Name
+                        </span>
+
+                        <input class="names_input name_text"
+                               type="text" required
+                               placeholder="...enter the text...">
+                    </label>
+
+                        <label class="placeholder names_label">
+
+                        <span class="names_span">
+                            Placeholder
+                        </span>
+
+                        <input class="names_input placeholder_text"
+                               type="text" required
+                               placeholder="...enter the text...">
+                    </label>
+
+                        <button class="add button" type="submit">
+                        Add
+                    </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="button_folders">
+
+                <button class="generate button" type="submit">
+                Generate
+            </button>
+
+                <button class="reset button" type="submit">
+                Reset
+            </button>
+            </div>
+
+
+
+        </div>
+
+        <div id="results" class="results">
+        </div>
+    </div>
+
+
+	<script>
+		$(document).ready(function() {
+
+$(".names_label").hide();
+
+function clearInputsFolders() {
+	$(".names_label").hide();
+	$('.names_input').val(``);
+}
+
+function showInputs() {
+	switch ($("input:radio:checked").val()) {
+		case 'Button':
+			$('.name').show();
+			break;
+		case 'Input':
+			$('.name, .placeholder').show();
+			break;
+		case 'Radio':
+			$('.value, .name').show();
+			break;
+		case 'Checkbox':
+			$('.value, .name').show();
+			break;
+		case 'Image':
+			$('.value, .name').show();
+			break;
+		default:
+			$(".names_label").hide();
+	}
+}
+
+$('.radio-check').click(function() {
+	clearInputsFolders();
+	showInputs();
+});
+
+let valueText, nameText, placeholderText, button, input, radio, checkbox, inputType, file;
+const buttonRemove = `<button class="remove button end">Delete Field</button>` + `<br class="end">`;
+
+function getInputsName() {
+	function checkNameValue(className) {
+		return ($(`.${className}_text`).val());
+	}
+
+	valueText = checkNameValue('value');
+	nameText = checkNameValue('name');
+	placeholderText = checkNameValue('placeholder');
+}
+
+function getInputTypeValue() {
+	inputType = $("input:radio:checked").val();
+}
+
+function getInputForAdd() {
+	getInputsName();
+
+	button = `<button>${nameText}</button>` + buttonRemove;
+
+	input = `<label>` +
+		`${nameText} <input type="text"  placeholder="${placeholderText}">` +
+		buttonRemove;
+
+	radio = `<label>` +
+		`<input type="radio" name="${nameText}"> ${valueText}</label>` +
+		buttonRemove;
+
+	checkbox = `<label>` +
+		`<input type="checkbox" name="${nameText}"> ${valueText}</label>` +
+		buttonRemove;
+
+	file = `<label>` +
+		`<a href="{% url 'webcam' %}"> ${nameText} <input type="button" onclick="{% url 'webcam' %}"  title=""> </a>` +
+		buttonRemove;
+}
+
+function removeError() {
+	$('.error').remove();
+}
+
+function error() {
+	removeError();
+	$('.names_input:invalid').after('<span class="error">Pease enter details</span>');
+};
+
+
+function addInput() {
+	removeError();
+	getInputsName();
+	getInputTypeValue();
+
+	let resultFolder = `#results`;
+
+	switch (inputType) {
+		case 'Button':
+			nameText !== '' ? $(resultFolder).append(button) : error();
+			break;
+		case 'Input':
+			nameText !== '' && placeholderText !== '' ? $(resultFolder).append(input) :
+				error();
+			break;
+		case 'Radio':
+			nameText !== '' && valueText !== '' ? $(resultFolder).append(radio) :
+				error();
+			break;
+		case 'Checkbox':
+			nameText !== '' && valueText !== '' ? $(resultFolder).append(checkbox) :
+				error();
+			break;
+		case 'Image':
+			nameText !== '' && valueText !== '' ? $(resultFolder).append(file) :
+				error();
+			break;
+		default:
+			alert('Please enter the details');
+	}
+}
+
+$('.add').click(function() {
+	getInputForAdd();
+	addInput();
+});
+
+$('.generate').click(function() {
+	$('.results').appendTo("result.html");
+	$(document).find(" .end").remove();
+	let resultCode = $(' .results').html();
+	let resultForm = '<form class="form">' + resultCode + '<button class="submit" type="submit">Submit</button>' +
+		'</form>';
+	$('#html').val(resultForm);
+
+});
+
+$('.reset').click(function() {
+	clearInputsFolders();
+	$('.results').html(``);
+	$('#html').val(``);
+	$("input:radio").prop('checked', false);
+	$('.error').remove();
+});
+
+$(document).on("click", ".remove", function() {
+	$(this).prev().remove();
+	$(this).next().remove();
+	$(this).remove();
+});
+});
+	</script>
+</body>
+
+</html>

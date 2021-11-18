@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Agender Signup</title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link href="http://fonts.cdnfonts.com/css/vegan-style-personal-use" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'styles/signup.css' %}">
+</head>
+
+<body>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0 ">
+        <div class="container" >
+          <div class="card register-card" >
+            <div class="row">
+              <div class="col-md-5">
+                <img src="{% static 'images/laptop.jpg' %}" alt="register" class="register-card-img">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <div class="brand-wrapper">
+                    <span class="logo">Agender</span>
+                  </div>
+                  <p class="register-card-description">Create a new account</p>
+                
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group form__element">
+                            <input class="form__input form-control" id="name" type="text" name="name" placeholder="Name">
+                        </div>
+
+                        <div class="form-group form__element">
+                            <input class="form__input form-control" id="email" type="email" name="email_id" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" autocomplete="email" placeholder="Email Address">
+                        </div>
+
+                        <div class="form__element form-group mb-4">
+                        <input class="form__input form-control" id="password" type="password" name="password" required minlength="8" aria-describedby="passwordHint" autocomplete="current-password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+                        </div>
+
+                        <div class="form-group form__element">
+								<input class="form__input form-control" id="cpassword" type="password" name="cpassword" required placeholder="Confirm Password">
+						</div>
+                        <br>
+                        <input class="btn btn-block register-btn btn-light mb-4" type="submit" value="Register Now">
+                        </form>
+                        <p class="register-card-footer-text">Have an account? <a href="{% url 'login' %}" class="text-reset">Login now</a></p>
+                        <nav class="register-card-footer-nav">
+                        <!-- <a href="#!">Terms of use.</a>
+                        <a href="#!">Privacy policy</a> -->
+                        </nav>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        </body>
+        </html>
+
