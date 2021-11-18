@@ -1,2 +1,6 @@
 agender_venv/
 __pycache__/
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
