@@ -186,6 +186,7 @@ def downscale(img):
     # print(img5.size)
 
 @csrf_exempt
+@login_required(login_url='/signup')
 def webcam(request):
     if request.method == 'POST':
         filename = './IMAGE/image.jpeg'
@@ -214,10 +215,12 @@ def webcam(request):
     return render(request, 'webcam.html', {'message': message})
 
 
+@login_required(login_url='/signup')
 def builder(request):
     return render(request, 'builder.html')
 
 
+@login_required(login_url='/signup')
 def form(request):
     return render(request, 'form.html')
 

@@ -3,27 +3,30 @@
 
 
 {% block content %}
-	<h1 class="text-center">Basic Dashboard</h1>
+	<h1 class="text-center mt-5">Basic Dashboard</h1>
 	<br>
-	<div class="row ml-5">
-		<div class="col">
+	<div class="row text-center mt-5">
+		<div class="col col-lg-3 col-md-6 col-sm-12 mb-5">
+			<a href="{% url 'builder' %}" class='btn btn-success btn-lg center'>
+				Form Builder
+			</a>
+		</div>
+		<div class="col col-lg-3 col-md-6 mb-5 col-sm-12">
+			<a href="{% url 'form' %}" class='btn btn-success btn-lg center'>
+				Form
+			</a>
+		</div>
+		<div class="col col-lg-3 col-md-6 mb-5 col-sm-12">
+			<a href="{% url 'webcam' %}" class='btn btn-success btn-lg center'>
+				Webcam
+			</a>
+		</div>
+		<div class="col col-lg-3 col-md-6 mb-5 col-sm-12">
 			<form method="POST" action="/logout">
 				{% csrf_token %}
 				<input class='btn btn-success btn-lg center' name="logout" 
 				id="logout" type="submit" value="Logout">
 			</form>
-		</div>
-		<div class="col">
-			<input class='btn btn-success btn-lg center' name="builder" 
-				id="builder" type="submit" value="Form Builder">
-		</div>
-		<div class="col">
-			<input class='btn btn-primary btn-lg center' name="form" 
-				id="form" type="submit" value="Form">
-		</div>
-		<div class="col">
-			<input class='btn btn-primary btn-lg center' name="webcam" 
-				id="webcam" type="submit" value="WebCam">
 		</div>
 	</div>
 
