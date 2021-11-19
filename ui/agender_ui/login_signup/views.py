@@ -30,33 +30,32 @@ import base64
 
 # Create your views here.
 
+# def age_model():
+#     model = tf.keras.Sequential()
+#     model.add(tf.keras.layers.Conv2D(
+#         64, 3, activation='relu', input_shape=(200, 200, 3)))
+#     model.add(tf.keras.layers.MaxPool2D())
+#     model.add(tf.keras.layers.Conv2D(128, 3, activation='relu'))
+#     model.add(tf.keras.layers.MaxPool2D())
+#     model.add(tf.keras.layers.Conv2D(256, 3, activation='relu'))
+#     model.add(tf.keras.layers.MaxPool2D())
+#     model.add(tf.keras.layers.Flatten())
+#     model.add(tf.keras.layers.Dense(1024, activation='relu'))
+#     model.add(tf.keras.layers.Dropout(0.1))
+#     model.add(tf.keras.layers.Dense(512, activation='relu'))
+#     model.add(tf.keras.layers.Dropout(0.1))
+#     model.add(tf.keras.layers.Dense(512, activation='relu'))
+#     model.add(tf.keras.layers.Dropout(0.1))
+#     model.add(tf.keras.layers.Dense(20, activation='softmax'))
+#     model.compile(optimizer='sgd',
+#                   loss=tf.losses.SparseCategoricalCrossentropy(
+#                       from_logits=False),
+#                   metrics=['accuracy'])
+#     model.load_weights('./models/checkpoint')
+#     return model
 
-def age_model():
-    model = tf.keras.Sequential()
-    model.add(tf.keras.layers.Conv2D(
-        64, 3, activation='relu', input_shape=(200, 200, 3)))
-    model.add(tf.keras.layers.MaxPool2D())
-    model.add(tf.keras.layers.Conv2D(128, 3, activation='relu'))
-    model.add(tf.keras.layers.MaxPool2D())
-    model.add(tf.keras.layers.Conv2D(256, 3, activation='relu'))
-    model.add(tf.keras.layers.MaxPool2D())
-    model.add(tf.keras.layers.Flatten())
-    model.add(tf.keras.layers.Dense(1024, activation='relu'))
-    model.add(tf.keras.layers.Dropout(0.1))
-    model.add(tf.keras.layers.Dense(512, activation='relu'))
-    model.add(tf.keras.layers.Dropout(0.1))
-    model.add(tf.keras.layers.Dense(512, activation='relu'))
-    model.add(tf.keras.layers.Dropout(0.1))
-    model.add(tf.keras.layers.Dense(20, activation='softmax'))
-    model.compile(optimizer='sgd',
-                  loss=tf.losses.SparseCategoricalCrossentropy(
-                      from_logits=False),
-                  metrics=['accuracy'])
-    model.load_weights('./models/checkpoint')
-    return model
 
-
-model = age_model()
+# model = age_model()
 
 
 def signup(request):
@@ -195,6 +194,7 @@ def downscale(img):
     img5 = img.resize((200, 200), Image.ANTIALIAS)
     img5.save("IM/resized_image.jpg")
     # print(img5.size)
+
 
 @csrf_exempt
 @ login_required(login_url='/signup')
