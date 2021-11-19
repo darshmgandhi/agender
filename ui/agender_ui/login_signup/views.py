@@ -22,9 +22,41 @@ from django.contrib.sessions.models import Session
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+import tensorflow as tf
+from django.templatetags.static import static
+import io
+import base64
 # import requests
 
 # Create your views here.
+
+
+def age_model():
+    model = tf.keras.Sequential()
+    model.add(tf.keras.layers.Conv2D(
+        64, 3, activation='relu', input_shape=(200, 200, 3)))
+    model.add(tf.keras.layers.MaxPool2D())
+    model.add(tf.keras.layers.Conv2D(128, 3, activation='relu'))
+    model.add(tf.keras.layers.MaxPool2D())
+    model.add(tf.keras.layers.Conv2D(256, 3, activation='relu'))
+    model.add(tf.keras.layers.MaxPool2D())
+    model.add(tf.keras.layers.Flatten())
+    model.add(tf.keras.layers.Dense(1024, activation='relu'))
+    model.add(tf.keras.layers.Dropout(0.1))
+    model.add(tf.keras.layers.Dense(512, activation='relu'))
+    model.add(tf.keras.layers.Dropout(0.1))
+    model.add(tf.keras.layers.Dense(512, activation='relu'))
+    model.add(tf.keras.layers.Dropout(0.1))
+    model.add(tf.keras.layers.Dense(20, activation='softmax'))
+    model.compile(optimizer='sgd',
+                  loss=tf.losses.SparseCategoricalCrossentropy(
+                      from_logits=False),
+                  metrics=['accuracy'])
+    model.load_weights('./models/checkpoint')
+    return model
+
+
+model = age_model()
 
 
 def signup(request):
@@ -32,24 +64,29 @@ def signup(request):
         name = request.POST.get('name')
         email_id = request.POST.get('email_id')
         password = request.POST.get('password')
-        # password = hashlib.sha256(post.password.encode())
-        # password = post.password.hexdigest()
-        user = User.objects.create_user(username=email_id,
-                                        password=password, first_name=name)
-        return redirect('login')
+        try:
+            uid = User.objects.get(username=email_id)
+            print(uid)
+            return redirect('login')
+        except User.DoesNotExist:
+            user = User.objects.create_user(username=email_id,
+                                            password=password, first_name=name)
+            return redirect('login')
+
     else:
         return render(request, 'signup.html')
 
 
 def login(request):
     if request.method == 'POST':
-        print("Hello")
         email_id = request.POST.get('email_id')
         password = request.POST.get('password')
         user = authenticate(request, username=email_id, password=password)
         if user is not None:
             auth_login(request, user)
             return redirect('new_page')
+        elif user is None:
+            return redirect('signup')
     else:
         return render(request, 'login.html')
 
@@ -98,7 +135,7 @@ def login(request):
 #     else:
 #         return render(request, 'login.html')
 
-@login_required(login_url='/signup')
+@ login_required(login_url='/signup')
 def new_page(request):
     return render(request, 'home.html')
 
@@ -121,7 +158,7 @@ def contrast(img):
 
 def face_detect(filename, faces, b):
     data = pyplot.imread(filename)
-    pyplot.imshow(data)
+    # pyplot.imshow(data)
     ax = pyplot.gca()
 
     for face in faces:
@@ -135,7 +172,7 @@ def face_detect(filename, faces, b):
         #   dot=Circle(value,radius=1.5,color="yellow")
         #  ax.add_patch(dot)
 
-    pyplot.show()
+    # pyplot.show()
 
 
 def crop(b, filename):
@@ -151,46 +188,64 @@ def crop(b, filename):
 
 
 def downscale(img):
-    basewidth = 100
-    wpercent = (basewidth/float(img.size[0]))
+    # basewidth = 100
+    # wpercent = (basewidth/float(img.size[0]))
     # print(wpercent)
-    hsize = int((float(img.size[1])*float(wpercent)))
-    img5 = img.resize((basewidth, hsize), Image.ANTIALIAS)
-    img5.save(f"IM/resized_image{img.size[0]}.jpg")
+    # hsize = int((float(img.size[1])*float(wpercent)))
+    img5 = img.resize((200, 200), Image.ANTIALIAS)
+    img5.save("IM/resized_image.jpg")
     # print(img5.size)
 
 
-@login_required(login_url='/signup')
-def image_process(request):
-    filename = "IMAGE/image1.jpg"
-    img = pyplot.imread(filename)
-    thresh = 0.55
-    b = []
-    if(contrast(img) >= thresh):  # contrast checking
-        print("Low Contrast: No")
-        detector = MTCNN()  # face detection
-        faces = detector.detect_faces(img)
-        face_detect(filename, faces, b)
-        # print(b)
-        crop(b, filename)  # cropping
+@ csrf_exempt
+@ login_required(login_url='/signup')
+def webcam(request):
+    if request.method == 'POST':
+        filename = './IMAGE/image.jpeg'
+        with Image.open(io.BytesIO(base64.decodebytes(bytes(request.POST['img'].replace('data:image/jpeg;base64,', ''), "utf-8")))) as image:
+            image.save(filename)
+        img = pyplot.imread(filename)
+        thresh = 0.55
+        b = []
+        if(contrast(img) >= thresh):  # contrast checking
+            # print("Low Contrast: No")
+            detector = MTCNN()  # face detection
+            faces = detector.detect_faces(img)
+            face_detect(filename, faces, b)
+            # print(b)
+            crop(b, filename)  #
+            # model = age_model()
+            test_image = tf.expand_dims(tf.io.decode_image(
+                tf.io.read_file("IM/resized_image.jpg"), dtype=tf.float32), axis=0)
+            prediction = np.argmax(model.predict(test_image)[0]) * 5
+            message = f'Predicted Age: {prediction + 1}-{prediction + 5}'
+            print('Prediction Complete')
+        else:
+            # print("Low Contrast: Yes")
+            message = "Low Contrast Image. Please change you surroundings."
     else:
-        print("Low Contrast: Yes")
-        pass
-    return render(request, 'signup.html')
+        message = ''
+    return render(request, 'webcam.html', {'message': message})
 
 
-@login_required(login_url='/signup')
+@ login_required(login_url='/signup')
 def builder(request):
     return render(request, 'builder.html')
 
 
-@login_required(login_url='/signup')
+@ login_required(login_url='/signup')
 def form(request):
     return render(request, 'form.html')
 
 
-@login_required(login_url='/signup')
+@ login_required(login_url='/signup')
 def webcam(request):
     if request.method == 'POST':
         print(request.POST.get('img'))
     return render(request, 'webcam.html')
+
+
+@ csrf_exempt
+def save_form(request):
+    if request.method == 'POST':
+        pass

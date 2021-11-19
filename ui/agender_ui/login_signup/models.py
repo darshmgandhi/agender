@@ -15,3 +15,11 @@ from djongo import models
 
 #     class Meta:
 #         managed = False
+
+class Field(models.Model):
+    field_name = models.TextField(db_column = 'name', max_length = 30)
+    tag = models.TextField(db_column = 'tag', max_length = 30)
+    label = models.TextField(db_column = 'label', max_length = 30)
+
+class Form(models.Model):
+    name = models.TextField(db_column = 'name', max_length = 100)

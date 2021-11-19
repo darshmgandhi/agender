@@ -52,8 +52,13 @@
         font-family: 'Oswald', sans-serif;
     }
 </style>
-
 <body>
+    <script>
+        function submitForm() {
+            document.getElementById("img").setAttribute("value", image_data_url);
+            document.getElementById("form").submit();
+        }
+    </script>
     <div id="first">
         <button id="start-camera">Start Camera</button>
         <video id="video" width="300" height="400" autoplay></video>
@@ -62,8 +67,7 @@
         <canvas id="canvas" width="300" height="230" padding="10px"></canvas>
     </div>
     <div id="second">
-        <form id="form" method="POST">
-			{% csrf_token %}
+        <form id="form" method="POST" action="webcam">
             <ol align="left">
                 <ol font-weight="20px"> Instructions: </ol><br>
                 <LI> Ensure your Face is well-lit – Avoid low light or light source behind you, </LI>
@@ -85,8 +89,9 @@
                         I understand that my images will not be shared with any third party and will be retained for only as long as is required for the identified purposes
                     </li>
                 </ol><br>
-                <input type="hidden" id="img" value="" name='img'>
-                <input type="button" onClick="submit()" value="Validate" id="btncheck">
+                <input type="hidden" name="img" id="img" value="">
+                <input type="button" onClick="submitForm()" value="Validate" id="btncheck">
+                <label>{{message}}</label>
 
             </ol>
         </form>
@@ -116,8 +121,7 @@
 
     click_button.addEventListener('click', function() {
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-        let image = canvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
-        window.location.href = image;
+        image_data_url = canvas.toDataURL('image/jpeg');
 
 
         // data url of the image
@@ -125,11 +129,6 @@
 
     });
 
-    function submit() {
-        document.getElementById("img").setAttribute("value", "image_data_url");
-        document.getElementById("form").submit;
-		console.log(document.getElementById("form").submit);
-    }
 </script>
 
 </html>
