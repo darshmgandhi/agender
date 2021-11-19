@@ -195,8 +195,7 @@ def downscale(img):
     img5.save("IM/resized_image.jpg")
     # print(img5.size)
 
-
-@ csrf_exempt
+@csrf_exempt
 @ login_required(login_url='/signup')
 def webcam(request):
     if request.method == 'POST':
@@ -237,11 +236,11 @@ def form(request):
     return render(request, 'form.html')
 
 
-@ login_required(login_url='/signup')
-def webcam(request):
-    if request.method == 'POST':
-        print(request.POST.get('img'))
-    return render(request, 'webcam.html')
+# @ login_required(login_url='/signup')
+# def webcam(request):
+#     if request.method == 'POST':
+#         print(request.POST.get('img'))
+#     return render(request, 'webcam.html')
 
 
 @ csrf_exempt
