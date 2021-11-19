@@ -195,6 +195,7 @@ def downscale(img):
     img5.save("IM/resized_image.jpg")
     # print(img5.size)
 
+
 @csrf_exempt
 @ login_required(login_url='/signup')
 def webcam(request):
