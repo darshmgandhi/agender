@@ -5,3 +5,7 @@ __pycache__/
 .RData
 .Ruserdata
 *checkpoint*
+migrations/
+!migrations/__init__.py
+cropped_image*
+resized_image*
