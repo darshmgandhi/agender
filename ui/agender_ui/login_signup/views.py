@@ -109,7 +109,7 @@ def logout(request):
 
 
 def contrast(img):
-    #img = cv2.imread(filename)
+    # img = cv2.imread(filename)
     Y = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # print(np.array(img))
 
@@ -191,4 +191,6 @@ def form(request):
 
 @login_required(login_url='/signup')
 def webcam(request):
+    if request.method == 'POST':
+        print(request.POST.get('img'))
     return render(request, 'webcam.html')

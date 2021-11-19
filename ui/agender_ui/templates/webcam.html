@@ -62,7 +62,8 @@
         <canvas id="canvas" width="300" height="230" padding="10px"></canvas>
     </div>
     <div id="second">
-        <form id="form" method="GET">
+        <form id="form" method="POST">
+			{% csrf_token %}
             <ol align="left">
                 <ol font-weight="20px"> Instructions: </ol><br>
                 <LI> Ensure your Face is well-lit – Avoid low light or light source behind you, </LI>
@@ -84,7 +85,7 @@
                         I understand that my images will not be shared with any third party and will be retained for only as long as is required for the identified purposes
                     </li>
                 </ol><br>
-                <input type="hidden" id="img" value="">
+                <input type="hidden" id="img" value="" name='img'>
                 <input type="button" onClick="submit()" value="Validate" id="btncheck">
 
             </ol>
@@ -115,17 +116,19 @@
 
     click_button.addEventListener('click', function() {
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-        let image_data_url = canvas.toDataURL('image/jpeg');
+        let image = canvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
+        window.location.href = image;
 
 
         // data url of the image
-        console.log(image_data_url);
+        // console.log(image);
 
     });
 
     function submit() {
         document.getElementById("img").setAttribute("value", "image_data_url");
         document.getElementById("form").submit;
+		console.log(document.getElementById("form").submit);
     }
 </script>
 
