@@ -16,13 +16,25 @@ from djongo import models
 #     class Meta:
 #         managed = False
 
-# class Field(models.Model):
-#     field_name = models.TextField(db_column = 'name', max_length = 30)
-#     tag = models.TextField(db_column = 'tag', max_length = 30)
-#     label = models.TextField(db_column = 'label', max_length = 30)
+class Field(models.Model):
+    _id = models.ObjectIdField()
+    field_name = models.CharField(max_length = 30)
+    tag = models.CharField(max_length = 30)
+    label = models.CharField(max_length = 30)
 
-# class Form(models.Model):
-#     name = models.TextField(db_column = 'name', max_length = 100)
-#     fields = models.ArrayField(
-#         model_container = Field
-#     )
+class Form(models.Model):
+    name = models.CharField(max_length = 100)
+    fields = models.ArrayField(
+        model_container = Field
+    )
+
+TITLE_TYPE_CHOICES = (('mr','Mr'), ('mrs','Mrs'), ('miss','Miss'),)
+VEHICLE_TYPE_CHOICES = ( ('Bike','bike'), ('Car','car'), ('Cycle','cycle'))
+
+class response(models.Model):
+    first_name= models.CharField(max_length=100)
+    last_name= models.CharField(max_length=100)
+    email= models.EmailField(max_length=100)
+    title = models.CharField(max_length=10, choices=TITLE_TYPE_CHOICES)
+    #image = models.ImageField(upload_to='IMAGE/')
+    #vehicle = models.CharField(max_length=50,widget=models.CheckboxSelectMultiple, choices=VEHICLE_TYPE_CHOICES)

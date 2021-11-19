@@ -141,9 +141,13 @@
         <div id="results" class="results">
         </div>
     </div>
+    <form method="POST" id="resultForm" action="save_formdata">
+
+    </form>
 
 
 	<script>
+        var parser = new DOMParser()
 		$(document).ready(function() {
 
 $(".names_label").hide();
@@ -206,6 +210,13 @@ function getInputForAdd() {
 		`${nameText} <input type="text"  placeholder="${placeholderText}">` +
 		buttonRemove;
 
+    input_hidden = `{input type="hidden" name="${nameText}" value="${nameText},text"}`
+    input_hidden = document.createElement("input")
+    input_hidden.setAttribute('name', nameText)
+    input_hidden.setAttribute('value', `${nameText},text`)
+    //input_hidden.attributes.name = nameText
+    //input_hidden.attributes.value = `${nameText}, text`
+
 	radio = `<label>` +
 		`<input type="radio" name="${nameText}"> ${valueText}</label>` +
 		buttonRemove;
@@ -243,6 +254,8 @@ function addInput() {
 		case 'Input':
 			nameText !== '' && placeholderText !== '' ? $(resultFolder).append(input) :
 				error();
+              
+            document.getElementById('resultForm').appendChild(input_hidden)//.innerHTML += parser.parseFromString(input_hidden, 'text/html').body
 			break;
 		case 'Radio':
 			nameText !== '' && valueText !== '' ? $(resultFolder).append(radio) :
@@ -267,12 +280,13 @@ $('.add').click(function() {
 });
 
 $('.generate').click(function() {
-	$('.results').appendTo("result.html");
-	$(document).find(" .end").remove();
-	let resultCode = $(' .results').html();
-	let resultForm = '<form class="form">' + resultCode + '<button class="submit" type="submit">Submit</button>' +
-		'</form>';
-	$('#html').val(resultForm);
+    document.getElementById("resultForm").submit();
+	//$('.results').appendTo("result.html");
+	//$(document).find(" .end").remove();
+	//let resultCode = $(' .results').html();
+	//let resultForm = '<form class="form">' + resultCode + '<button class="submit" type="submit">Submit</button>' +
+	//	'</form>';
+	//$('#html').val(resultForm);
 
 });
 

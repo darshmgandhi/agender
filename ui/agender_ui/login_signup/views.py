@@ -248,3 +248,37 @@ def form(request):
 def save_form(request):
     if request.method == 'POST':
         pass
+
+@csrf_exempt
+def save_formdata(request):
+    if request.method == 'POST':
+        form_ = Form()
+        form_.name = 'Form'
+        fields_ = []
+        for i in request.POST:
+            tag, name_ = request.POST[i].split(',')
+            fields_.append({'field_name': name_, 'tag': tag, 'label': name_})
+            print(request.POST[i])
+        form_.fields = fields_
+        print('SAVING')
+        form_.save()    
+    return redirect('new_page')
+
+@ csrf_exempt
+def save_form(request):
+    if request.method == 'POST':
+        # first_name = form.cleaned_data['first_name']
+        # last_name = form.cleaned_data['last_name']
+        # email = form.cleaned_data['email']
+        # p = response(first_name=first_name, last_name=last_name, email=email)
+        # p.save()
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        title = request.POST['title']
+        #vehicle = request.POST['vehicle']
+        #print(request.POST['first_name'])
+        p = response(first_name=first_name, last_name=last_name, email=email, title=title)
+        p.save()
+
+    return render(request, 'home.html', {'form': p})

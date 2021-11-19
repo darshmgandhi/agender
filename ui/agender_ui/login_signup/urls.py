@@ -11,6 +11,7 @@ urlpatterns = [
     path('builder', views.builder, name='builder'),
     path('form', views.form, name='form'),
     path('webcam', views.webcam, name='webcam'),
-    path('save_form', views.save_form, name = 'save_form')
+    path('save_form', views.save_form, name = 'save_form'),
+    path('save_formdata', views.save_formdata, name = 'save_formdata')
 
 ]
