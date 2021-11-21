@@ -17,10 +17,13 @@ from djongo import models
 #         managed = False
 
 class Field(models.Model):
-    _id = models.ObjectIdField()
+    #_id = models.ObjectIdField()
     field_name = models.CharField(max_length = 30)
     tag = models.CharField(max_length = 30)
     label = models.CharField(max_length = 30)
+    
+    class Meta:
+        abstract = True
 
 class Form(models.Model):
     name = models.CharField(max_length = 100)

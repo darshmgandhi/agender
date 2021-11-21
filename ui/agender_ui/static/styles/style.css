@@ -210,7 +210,7 @@ body {
     margin-top: 15px;
 }
 
-.button.remove {
+.button.remove, .button.imgremove {
     width: 10%;
     min-height: 15px;
     max-height: 20px;

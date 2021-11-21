@@ -256,9 +256,10 @@ def save_formdata(request):
         form_.name = 'Form'
         fields_ = []
         for i in request.POST:
-            tag, name_ = request.POST[i].split(',')
-            fields_.append({'field_name': name_, 'tag': tag, 'label': name_})
-            print(request.POST[i])
+            values = request.POST[i].split(',')
+            tag = values[-1]
+            name_ = values[:-1]
+            fields_.append({'field_name': i, 'tag': tag, 'label': name_})
         form_.fields = fields_
         print('SAVING')
         form_.save()    

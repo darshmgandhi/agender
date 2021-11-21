@@ -83,6 +83,17 @@
 
                     <form class="inputs_names">
 
+                        <label class="number names_label">
+
+                            <span class="names_span">
+                                Number of Elements
+                            </span>
+    
+                            <input class="names_input number_text"
+                                   type="text" required
+                                   placeholder="...enter the text...">
+                        </label>
+
                         <label class="value names_label ">
 
                         <span class="names_span">
@@ -116,6 +127,19 @@
                                placeholder="...enter the text...">
                     </label>
 
+
+                    <label class="r_labels names_label">
+
+                        <span class="names_span">
+                            Labels(Comma Separated)
+                        </span>
+
+                        <input class="names_input r_labels_text"
+                               type="text" required
+                               placeholder="...enter the text...">
+                    </label>
+
+
                         <button class="add button" type="submit">
                         Add
                     </button>
@@ -139,6 +163,7 @@
         </div>
 
         <div id="results" class="results">
+            <label> Form Title <input type="text"  placeholder="Enter Title" id="form_title" name="form_title"> </label><br>
         </div>
     </div>
     <form method="POST" id="resultForm" action="save_formdata">
@@ -166,13 +191,13 @@ function showInputs() {
 			$('.name, .placeholder').show();
 			break;
 		case 'Radio':
-			$('.value, .name').show();
+			$('.name, .number, .r_labels').show();
 			break;
 		case 'Checkbox':
-			$('.value, .name').show();
+			$('.name, .number, .r_labels').show();
 			break;
 		case 'Image':
-			$('.value, .name').show();
+			//$('.value, .name').show();
 			break;
 		default:
 			$(".names_label").hide();
@@ -185,7 +210,7 @@ $('.radio-check').click(function() {
 });
 
 let valueText, nameText, placeholderText, button, input, radio, checkbox, inputType, file;
-const buttonRemove = `<button class="remove button end">Delete Field</button>` + `<br class="end">`;
+const buttonRemove = `<button class="remove button end">Delete </button>` + `<br class="end">`;
 
 function getInputsName() {
 	function checkNameValue(className) {
@@ -195,6 +220,8 @@ function getInputsName() {
 	valueText = checkNameValue('value');
 	nameText = checkNameValue('name');
 	placeholderText = checkNameValue('placeholder');
+    numberText = checkNameValue('number');
+    labelsText = checkNameValue('r_labels').split(",")
 }
 
 function getInputTypeValue() {
@@ -210,23 +237,34 @@ function getInputForAdd() {
 		`${nameText} <input type="text"  placeholder="${placeholderText}">` +
 		buttonRemove;
 
-    input_hidden = `{input type="hidden" name="${nameText}" value="${nameText},text"}`
-    input_hidden = document.createElement("input")
-    input_hidden.setAttribute('name', nameText)
-    input_hidden.setAttribute('value', `${nameText},text`)
     //input_hidden.attributes.name = nameText
     //input_hidden.attributes.value = `${nameText}, text`
 
-	radio = `<label>` +
-		`<input type="radio" name="${nameText}"> ${valueText}</label>` +
-		buttonRemove;
+    radio = `<label>` + nameText + '<br>'
+    for (let i = 0; i < parseInt(numberText); i++) {
+        radio += 
+            `<input type="radio" name="${nameText}"> ${labelsText[i]}` +
+            buttonRemove;
+    }
+    radio += `</label>`    
 
-	checkbox = `<label>` +
-		`<input type="checkbox" name="${nameText}"> ${valueText}</label>` +
-		buttonRemove;
+    checkbox = `<label>` + nameText + '<br>'
+        for (let i = 0; i < parseInt(numberText); i++) {
+            checkbox += 
+                `<input type="checkbox" name="${nameText}"> ${labelsText[i]}` +
+                buttonRemove;
+        }
+        checkbox += `</label>`    
 
-	file = `<label>` +
-		`<a href="{% url 'webcam' %}"> ${nameText} <input type="button" onclick="{% url 'webcam' %}"  title=""> </a>` +
+	//checkbox = `<label>` +
+	//	`<input type="checkbox" name="${nameText}"> ${valueText}</label>` +
+	//	buttonRemove;
+
+	file = `<label>Enter Gender<br>` +
+        `<input type="radio" name="verification"> Male</label>` +
+        `<input type="radio" name="verification"> Female</label><br>` +
+        `Enter Age <input type="text"><br>` +
+		`<a href="{% url 'webcam' %}"> Verify <input type="button" onclick="{% url 'webcam' %}"  title=""> </a>` +
 		buttonRemove;
 }
 
@@ -250,24 +288,47 @@ function addInput() {
 	switch (inputType) {
 		case 'Button':
 			nameText !== '' ? $(resultFolder).append(button) : error();
+            input_hidden = document.createElement("input")
+            input_hidden.setAttribute('type', 'hidden')
+            input_hidden.setAttribute('name', nameText)
+            input_hidden.setAttribute('value', `${nameText},label`)  
+            document.getElementById('resultForm').appendChild(input_hidden)
 			break;
 		case 'Input':
 			nameText !== '' && placeholderText !== '' ? $(resultFolder).append(input) :
 				error();
-              
+            input_hidden = document.createElement("input")
+            input_hidden.setAttribute('type', 'hidden')
+            input_hidden.setAttribute('name', nameText)
+            input_hidden.setAttribute('value', `${nameText},text`)  
             document.getElementById('resultForm').appendChild(input_hidden)//.innerHTML += parser.parseFromString(input_hidden, 'text/html').body
 			break;
 		case 'Radio':
-			nameText !== '' && valueText !== '' ? $(resultFolder).append(radio) :
+			nameText !== '' && numberText !== '' ? $(resultFolder).append(radio) :
 				error();
+            input_hidden = document.createElement("input")
+            input_hidden.setAttribute('type', 'hidden')
+            input_hidden.setAttribute('name', nameText)
+            input_hidden.setAttribute('value', `${labelsText},radio`)  
+            document.getElementById('resultForm').appendChild(input_hidden)
 			break;
 		case 'Checkbox':
-			nameText !== '' && valueText !== '' ? $(resultFolder).append(checkbox) :
+			nameText !== '' && numberText !== '' ? $(resultFolder).append(checkbox) :
 				error();
+            input_hidden = document.createElement("input")
+            input_hidden.setAttribute('type', 'hidden')
+            input_hidden.setAttribute('name', nameText)
+            input_hidden.setAttribute('value', `${labelsText},checkbox`)  
+            document.getElementById('resultForm').appendChild(input_hidden)
 			break;
 		case 'Image':
-			nameText !== '' && valueText !== '' ? $(resultFolder).append(file) :
-				error();
+            input_hidden = document.createElement("input")
+            input_hidden.setAttribute('type', 'hidden')
+            input_hidden.setAttribute('name', 'verify_image')
+            input_hidden.setAttribute('value', `true,verify_image`)  
+            document.getElementById('resultForm').appendChild(input_hidden)
+			$(resultFolder).append(file)
+				//error();
 			break;
 		default:
 			alert('Please enter the details');
@@ -280,6 +341,11 @@ $('.add').click(function() {
 });
 
 $('.generate').click(function() {
+    input_hidden = document.createElement("input")
+    input_hidden.setAttribute('type', 'hidden')
+    input_hidden.setAttribute('name', 'generator_title')
+    input_hidden.setAttribute('value', `${$('#form_title').val()},label`)  
+    document.getElementById('resultForm').appendChild(input_hidden)
     document.getElementById("resultForm").submit();
 	//$('.results').appendTo("result.html");
 	//$(document).find(" .end").remove();
@@ -296,6 +362,7 @@ $('.reset').click(function() {
 	$('#html').val(``);
 	$("input:radio").prop('checked', false);
 	$('.error').remove();
+    $('.results').html(``).append('<label> Form Title <input type="text"  placeholder="Enter Title" name="form_title"> </label><br>')
 });
 
 $(document).on("click", ".remove", function() {
