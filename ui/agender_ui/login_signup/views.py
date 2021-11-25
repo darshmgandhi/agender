@@ -76,7 +76,7 @@ def signup(request):
         return render(request, 'signup.html')
 
 
-def login(request):
+def logina(request):
     if request.method == 'POST':
         email_id = request.POST.get('email_id')
         password = request.POST.get('password')
