@@ -1,0 +1,8 @@
+ContrastBrightness.py
+setup.py
+agender_ui.egg-info/PKG-INFO
+agender_ui.egg-info/SOURCES.txt
+agender_ui.egg-info/dependency_links.txt
+agender_ui.egg-info/namespace_packages.txt
+agender_ui.egg-info/top_level.txt
+agender_ui.egg-info/zip-safe

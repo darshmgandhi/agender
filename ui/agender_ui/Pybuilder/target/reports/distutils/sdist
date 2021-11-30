@@ -1,0 +1,42 @@
+running clean
+'build\temp.win-amd64-3.9' does not exist -- can't clean it
+'build\lib' does not exist -- can't clean it
+'build\bdist.win-amd64' does not exist -- can't clean it
+'build\scripts-3.9' does not exist -- can't clean it
+running sdist
+running egg_info
+creating agender_ui.egg-info
+writing agender_ui.egg-info\PKG-INFO
+writing dependency_links to agender_ui.egg-info\dependency_links.txt
+writing namespace_packages to agender_ui.egg-info\namespace_packages.txt
+writing top-level names to agender_ui.egg-info\top_level.txt
+writing manifest file 'agender_ui.egg-info\SOURCES.txt'
+reading manifest file 'agender_ui.egg-info\SOURCES.txt'
+writing manifest file 'agender_ui.egg-info\SOURCES.txt'
+warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
+
+running check
+warning: Check: missing required meta-data: url
+
+warning: Check: missing meta-data: either (author and author_email) or (maintainer and maintainer_email) should be supplied
+
+creating agender_ui-1.0.dev0
+creating agender_ui-1.0.dev0\agender_ui.egg-info
+copying files to agender_ui-1.0.dev0...
+copying ContrastBrightness.py -> agender_ui-1.0.dev0
+copying setup.py -> agender_ui-1.0.dev0
+copying agender_ui.egg-info\PKG-INFO -> agender_ui-1.0.dev0\agender_ui.egg-info
+copying agender_ui.egg-info\SOURCES.txt -> agender_ui-1.0.dev0\agender_ui.egg-info
+copying agender_ui.egg-info\dependency_links.txt -> agender_ui-1.0.dev0\agender_ui.egg-info
+copying agender_ui.egg-info\namespace_packages.txt -> agender_ui-1.0.dev0\agender_ui.egg-info
+copying agender_ui.egg-info\top_level.txt -> agender_ui-1.0.dev0\agender_ui.egg-info
+copying agender_ui.egg-info\zip-safe -> agender_ui-1.0.dev0\agender_ui.egg-info
+not copying agender_ui.egg-info\SOURCES.txt (output up-to-date)
+Reading configuration from agender_ui-1.0.dev0\setup.cfg
+Adding new section [egg_info] to agender_ui-1.0.dev0\setup.cfg
+Setting egg_info.tag_build to '' in agender_ui-1.0.dev0\setup.cfg
+Setting egg_info.tag_date to 0 in agender_ui-1.0.dev0\setup.cfg
+Writing agender_ui-1.0.dev0\setup.cfg
+creating dist
+Creating tar archive
+removing 'agender_ui-1.0.dev0' (and everything under it)
