@@ -31,9 +31,28 @@ import base64
 # Create your views here.
 
 def age_model():
+    prediction_age = ['0 - 5', '6 - 10', '11 - 15', '16 - 20', '21 - 30', '31 - 40', 
+                      '41 - 50', '51 - 60', '61 - 70', '71 - 80', '81 - 90', '90 above']
     model = tf.keras.Sequential()
-    model.add(tf.keras.layers.Conv2D(
-        64, 3, activation='relu', input_shape=(200, 200, 3)))
+    model.add(tf.keras.layers.Conv2D(64, 3, activation = 'relu', input_shape = (200, 200, 3)))
+    model.add(tf.keras.layers.MaxPool2D())
+    model.add(tf.keras.layers.Conv2D(128, 3, activation = 'relu'))
+    model.add(tf.keras.layers.MaxPool2D())
+    #model.add(tf.keras.layers.Conv2D(256, 3, activation = 'relu'))
+    #model.add(tf.keras.layers.MaxPool2D())
+    model.add(tf.keras.layers.Flatten())
+    model.add(tf.keras.layers.Dense(512, activation = 'relu'))
+    model.add(tf.keras.layers.Dense(256, activation = 'relu'))
+    model.add(tf.keras.layers.Dense(12, activation = 'softmax'))
+    #model.compile(optimizer = 'adam', loss = tf.losses.SparseCategoricalCrossentropy(from_logits = False), metrics = ['accuracy'])
+    model.load_weights('./models/checkpoint')
+    #print('Age:', model.trainable_weights)
+    return model, prediction_age
+
+
+def gender_model():
+    model = tf.keras.Sequential()
+    model.add(tf.keras.layers.Conv2D(64, 3, activation='relu', input_shape=(200, 200, 3)))
     model.add(tf.keras.layers.MaxPool2D())
     model.add(tf.keras.layers.Conv2D(128, 3, activation='relu'))
     model.add(tf.keras.layers.MaxPool2D())
@@ -46,17 +65,15 @@ def age_model():
     model.add(tf.keras.layers.Dropout(0.1))
     model.add(tf.keras.layers.Dense(512, activation='relu'))
     model.add(tf.keras.layers.Dropout(0.1))
-    model.add(tf.keras.layers.Dense(20, activation='softmax'))
-    model.compile(optimizer='sgd',
-                  loss=tf.losses.SparseCategoricalCrossentropy(
-                      from_logits=False),
-                  metrics=['accuracy'])
-    model.load_weights('./models/checkpoint')
+    model.add(tf.keras.layers.Dense(2, activation='softmax'))
+    #model.compile(optimizer='sgd', loss=tf.losses.SparseCategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
+    model.load_weights('./models_gender/checkpoint')
+    #print('Gender:', model.trainable_weights)
     return model
 
 
-model = age_model()
-
+model, prediction_age = age_model()
+model_gender = gender_model()
 
 def signup(request):
     if request.method == 'POST':
@@ -178,11 +195,17 @@ def crop(b, filename):
     img = Image.open(filename)
     for bb in b:
         box = bb
-        box = (box[0], box[1], box[2]+box[0], box[3]+box[1])
+        #print(box[0])
+        #print(box[1])
+        #print(box[2])
+        #print(box[3])
+        #print(box)
+        box = ((box[0] + box[2] // 2) - box[3] // 2, box[1], (box[0] + box[2] // 2) + box[3] // 2, box[3]+box[1])
         c = img.crop(box)  # (left,upper,right,lower)
-        # print(c.size)
+        #print(box)
+        #print(c.size)
         # pyplot.imshow(c)
-        c.save(f"IM/cropped_image{box[0]}.jpg")
+        c.save(f"IM/cropped_image.jpg")
         downscale(c)
 
 
@@ -203,6 +226,7 @@ def webcam(request):
         filename = './IMAGE/image.jpeg'
         with Image.open(io.BytesIO(base64.decodebytes(bytes(request.POST['img'].replace('data:image/jpeg;base64,', ''), "utf-8")))) as image:
             image.save(filename)
+        filename = './IMAGE/image1.jpeg'
         img = pyplot.imread(filename)
         thresh = 0.55
         b = []
@@ -216,8 +240,13 @@ def webcam(request):
             # model = age_model()
             test_image = tf.expand_dims(tf.io.decode_image(
                 tf.io.read_file("IM/resized_image.jpg"), dtype=tf.float32), axis=0)
-            prediction = np.argmax(model.predict(test_image)[0]) * 5
-            message = f'Predicted Age: {prediction + 1}-{prediction + 5}'
+            prediction = prediction_age[np.argmax(model.predict(test_image)[0])]
+            prediction_gender = np.argmax(model.predict(test_image)[0])
+            if prediction_gender == 0:
+                prediction_gender = 'Male'
+            else:
+                prediction_gender = 'Female'
+            message = f'Predicted Age: {prediction}, Predicted Gender: {prediction_gender}'
             print('Prediction Complete')
         else:
             # print("Low Contrast: Yes")
