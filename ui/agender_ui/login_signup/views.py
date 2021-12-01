@@ -226,7 +226,7 @@ def webcam(request):
         filename = './IMAGE/image.jpeg'
         with Image.open(io.BytesIO(base64.decodebytes(bytes(request.POST['img'].replace('data:image/jpeg;base64,', ''), "utf-8")))) as image:
             image.save(filename)
-        filename = './IMAGE/image1.jpeg'
+        #filename = './IMAGE/image1.jpeg'
         img = pyplot.imread(filename)
         thresh = 0.55
         b = []
