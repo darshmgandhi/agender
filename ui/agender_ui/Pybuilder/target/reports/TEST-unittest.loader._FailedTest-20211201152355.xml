@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="unittest.loader._FailedTest-20211201152355" tests="1" file="unittest/loader.py" time="0.005" timestamp="2021-12-01T15:23:59" failures="0" errors="1" skipped="0">
+	<testcase classname="unittest.loader._FailedTest" name="UnitTest_tests" time="0.005" timestamp="2021-12-01T15:23:59">
+		<error type="ImportError" message="Failed to import test module: UnitTest_tests
+Traceback (most recent call last):
+  File &quot;C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\loader.py&quot;, line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File &quot;e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py&quot;, line 4, in &lt;module&gt;
+    from .views import age_model
+ImportError: attempted relative import with no known parent package
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\loader.py", line 34, in testFailure
+    raise self._exception
+ImportError: Failed to import test module: UnitTest_tests
+Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 4, in <module>
+    from .views import age_model
+ImportError: attempted relative import with no known parent package
+
+]]></error>
+	</testcase>
+</testsuite>

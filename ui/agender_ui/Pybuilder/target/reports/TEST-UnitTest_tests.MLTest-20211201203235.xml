@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211201203235" tests="2" file="UnitTest_tests.py" time="64.159" timestamp="2021-12-01T20:34:17" failures="1" errors="0" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_gender" time="33.759" timestamp="2021-12-01T20:34:17"/>
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=2)" time="30.400" timestamp="2021-12-01T20:33:44">
+		<failure type="AssertionError" message="'81 - 90' != '21 - 30'
+- 81 - 90
+? ^    ^
++ 21 - 30
+? ^    ^
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 65, in test_age
+    self.assertEqual(prediction, self.age[i])
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 912, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 1292, in assertMultiLineEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 753, in fail
+    raise self.failureException(msg)
+AssertionError: '81 - 90' != '21 - 30'
+- 81 - 90
+? ^    ^
++ 21 - 30
+? ^    ^
+
+]]></failure>
+	</testcase>
+</testsuite>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.Test-20211201154725" tests="10" file="UnitTest_tests.py" time="9.742" timestamp="2021-12-01T15:47:37" failures="0" errors="9" skipped="0">
+	<testcase classname="UnitTest_tests.Test" name="test1" time="8.998" timestamp="2021-12-01T15:47:36"/>
+	<testcase classname="UnitTest_tests.Test" name="test10" time="0.716" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 36, in test10
+    self.assertEqual(check(image10),"High brightness and High contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.Test" name="test2" time="0.004" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 12, in test2
+    self.assertEqual(check(image2),"Low brightness and High contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.Test" name="test3" time="0.004" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 15, in test3
+    self.assertEqual(check(image3),"High brightness and High contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.Test" name="test4" time="0.004" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 18, in test4
+    self.assertEqual(check(image4),"High brightness and High contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.Test" name="test5" time="0.003" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 21, in test5
+    self.assertEqual(check(image5),"High brightness and High contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.Test" name="test6" time="0.003" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 24, in test6
+    self.assertEqual(check(image6),"Low brightness and Low contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.Test" name="test7" time="0.004" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 27, in test7
+    self.assertEqual(check(image7),"Low brightness and High contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.Test" name="test8" time="0.003" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 30, in test8
+    self.assertEqual(check(image8),"Low brightness and Low contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.Test" name="test9" time="0.002" timestamp="2021-12-01T15:47:37">
+		<error type="error" message="OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 33, in test9
+    self.assertEqual(check(image9),"High brightness and High contrast")
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 17, in check
+    if (brightness(image)==True and contrast(image)==True):
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\main\python\ContrastBrightness.py", line 8, in brightness
+    L, A, B = cv2.split(cv2.cvtColor(image, cv2.COLOR_BGR2LAB))
+cv2.error: OpenCV(4.5.4-dev) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.cpp:182: error: (-215:Assertion failed) !_src.empty() in function 'cv::cvtColor'
+
+]]></error>
+	</testcase>
+</testsuite>

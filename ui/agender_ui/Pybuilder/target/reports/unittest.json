@@ -1,5 +1,10 @@
 {
   "errors": [],
-  "failures": [],
-  "tests-run": 0
+  "failures": [
+    {
+      "test": "UnitTest_tests.MLTest.test_age (i=2)",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Nova\\AppData\\Local\\Programs\\Python\\Python38\\lib\\unittest\\case.py\", line 60, in testPartExecutor\n    yield\n  File \"C:\\Users\\Nova\\AppData\\Local\\Programs\\Python\\Python38\\lib\\unittest\\case.py\", line 582, in subTest\n    yield\n  File \"e:\\niit\\semester 7\\capstone project ii\\project\\venv\\agender\\ui\\agender_ui\\pybuilder\\src\\unittest\\python\\UnitTest_tests.py\", line 65, in test_age\n    self.assertEqual(prediction, self.age[i])\n  File \"C:\\Users\\Nova\\AppData\\Local\\Programs\\Python\\Python38\\lib\\unittest\\case.py\", line 912, in assertEqual\n    assertion_func(first, second, msg=msg)\n  File \"C:\\Users\\Nova\\AppData\\Local\\Programs\\Python\\Python38\\lib\\unittest\\case.py\", line 1292, in assertMultiLineEqual\n    self.fail(self._formatMessage(msg, standardMsg))\n  File \"C:\\Users\\Nova\\AppData\\Local\\Programs\\Python\\Python38\\lib\\unittest\\case.py\", line 753, in fail\n    raise self.failureException(msg)\nAssertionError: '81 - 90' != '21 - 30'\n- 81 - 90\n? ^    ^\n+ 21 - 30\n? ^    ^\n\n"
+    }
+  ],
+  "tests-run": 12
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211201184454" tests="3" file="UnitTest_tests.py" time="32.213" timestamp="2021-12-01T18:45:47" failures="0" errors="3" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=0)" time="0.000" timestamp="0001-01-01T00:00:00">
+		<error type="AttributeError" message="'numpy.ndarray' object has no attribute 'read'"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 59, in test_age
+    face_detect(img, faces, b)
+  File "../login_signup\detectors.py", line 62, in face_detect
+    data = pyplot.imread(filename)
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\matplotlib\pyplot.py", line 2139, in imread
+    return matplotlib.image.imread(fname, format)
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\matplotlib\image.py", line 1560, in imread
+    with img_open(fname) as image:
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\ImageFile.py", line 121, in __init__
+    self._open()
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\PngImagePlugin.py", line 675, in _open
+    if not _accept(self.fp.read(8)):
+AttributeError: 'numpy.ndarray' object has no attribute 'read'
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=1)" time="0.000" timestamp="0001-01-01T00:00:00">
+		<error type="AttributeError" message="'numpy.ndarray' object has no attribute 'read'"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 59, in test_age
+    face_detect(img, faces, b)
+  File "../login_signup\detectors.py", line 62, in face_detect
+    data = pyplot.imread(filename)
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\matplotlib\pyplot.py", line 2139, in imread
+    return matplotlib.image.imread(fname, format)
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\matplotlib\image.py", line 1560, in imread
+    with img_open(fname) as image:
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\ImageFile.py", line 121, in __init__
+    self._open()
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\PngImagePlugin.py", line 675, in _open
+    if not _accept(self.fp.read(8)):
+AttributeError: 'numpy.ndarray' object has no attribute 'read'
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=2)" time="32.213" timestamp="2021-12-01T18:45:47">
+		<error type="AttributeError" message="'numpy.ndarray' object has no attribute 'read'"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 59, in test_age
+    face_detect(img, faces, b)
+  File "../login_signup\detectors.py", line 62, in face_detect
+    data = pyplot.imread(filename)
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\matplotlib\pyplot.py", line 2139, in imread
+    return matplotlib.image.imread(fname, format)
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\matplotlib\image.py", line 1560, in imread
+    with img_open(fname) as image:
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\ImageFile.py", line 121, in __init__
+    self._open()
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\PngImagePlugin.py", line 675, in _open
+    if not _accept(self.fp.read(8)):
+AttributeError: 'numpy.ndarray' object has no attribute 'read'
+]]></error>
+	</testcase>
+</testsuite>

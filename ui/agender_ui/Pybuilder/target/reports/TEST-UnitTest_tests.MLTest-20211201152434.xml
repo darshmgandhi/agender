@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211201152434" tests="1" file="UnitTest_tests.py" time="0.005" timestamp="2021-12-01T15:24:37" failures="0" errors="1" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_age" time="0.005" timestamp="2021-12-01T15:24:37">
+		<error type="NameError" message="name 'age_model' is not defined"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 40, in test_age
+    model = age_model()
+NameError: name 'age_model' is not defined
+]]></error>
+	</testcase>
+</testsuite>

@@ -1,8 +1,8 @@
 running clean
-'build\temp.win-amd64-3.9' does not exist -- can't clean it
+'build\temp.win-amd64-3.8' does not exist -- can't clean it
 'build\lib' does not exist -- can't clean it
 'build\bdist.win-amd64' does not exist -- can't clean it
-'build\scripts-3.9' does not exist -- can't clean it
+'build\scripts-3.8' does not exist -- can't clean it
 running sdist
 running egg_info
 creating agender_ui.egg-info
@@ -18,7 +18,7 @@ warning: sdist: standard file not found: should have one of README, README.rst, 
 running check
 warning: Check: missing required meta-data: url
 
-warning: Check: missing meta-data: either (author and author_email) or (maintainer and maintainer_email) should be supplied
+warning: Check: missing meta-data: either (author and author_email) or (maintainer and maintainer_email) must be supplied
 
 creating agender_ui-1.0.dev0
 creating agender_ui-1.0.dev0\agender_ui.egg-info

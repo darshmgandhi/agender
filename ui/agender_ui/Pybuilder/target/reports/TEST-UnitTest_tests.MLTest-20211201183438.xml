@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211201183438" tests="1" file="UnitTest_tests.py" time="16.585" timestamp="2021-12-01T18:35:03" failures="0" errors="1" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_age" time="16.585" timestamp="2021-12-01T18:35:03">
+		<error type="ValueError" message="Shapes (256,) and (512,) are incompatible"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 672, in run
+    self._callSetUp()
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 630, in _callSetUp
+    self.setUp()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 46, in setUp
+    self.model_gender = gender_model()
+  File "../login_signup\detectors.py", line 46, in gender_model
+    model.load_weights('../models/checkpoint')
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\keras\utils\traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\tensorflow\python\framework\tensor_shape.py", line 1171, in assert_is_compatible_with
+    raise ValueError("Shapes %s and %s are incompatible" % (self, other))
+ValueError: Shapes (256,) and (512,) are incompatible
+]]></error>
+	</testcase>
+</testsuite>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.Test-20211201161606" tests="10" file="UnitTest_tests.py" time="7.822" timestamp="2021-12-01T16:16:16" failures="1" errors="0" skipped="0">
+	<testcase classname="UnitTest_tests.Test" name="test1" time="6.859" timestamp="2021-12-01T16:16:15"/>
+	<testcase classname="UnitTest_tests.Test" name="test10" time="0.066" timestamp="2021-12-01T16:16:15"/>
+	<testcase classname="UnitTest_tests.Test" name="test2" time="0.066" timestamp="2021-12-01T16:16:15"/>
+	<testcase classname="UnitTest_tests.Test" name="test4" time="0.172" timestamp="2021-12-01T16:16:15"/>
+	<testcase classname="UnitTest_tests.Test" name="test5" time="0.135" timestamp="2021-12-01T16:16:15"/>
+	<testcase classname="UnitTest_tests.Test" name="test6" time="0.246" timestamp="2021-12-01T16:16:16"/>
+	<testcase classname="UnitTest_tests.Test" name="test7" time="0.037" timestamp="2021-12-01T16:16:16"/>
+	<testcase classname="UnitTest_tests.Test" name="test8" time="0.007" timestamp="2021-12-01T16:16:16"/>
+	<testcase classname="UnitTest_tests.Test" name="test9" time="0.062" timestamp="2021-12-01T16:16:16"/>
+	<testcase classname="UnitTest_tests.Test" name="test3" time="0.172" timestamp="2021-12-01T16:16:15">
+		<failure type="AssertionError" message="'Low brightness and High contrast' != 'High brightness and High contrast'
+- Low brightness and High contrast
+? ^^^
++ High brightness and High contrast
+? ^^^^
+"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 15, in test3
+    self.assertEqual(check(image3),"High brightness and High contrast")
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 912, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 1292, in assertMultiLineEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 753, in fail
+    raise self.failureException(msg)
+AssertionError: 'Low brightness and High contrast' != 'High brightness and High contrast'
+- Low brightness and High contrast
+? ^^^
++ High brightness and High contrast
+? ^^^^
+
+]]></failure>
+	</testcase>
+</testsuite>

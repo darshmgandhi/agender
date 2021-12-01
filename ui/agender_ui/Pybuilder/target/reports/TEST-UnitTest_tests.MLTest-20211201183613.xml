@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211201183613" tests="1" file="UnitTest_tests.py" time="15.508" timestamp="2021-12-01T18:36:44" failures="0" errors="1" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_age" time="15.508" timestamp="2021-12-01T18:36:44">
+		<error type="NameError" message="name 'MTCNN' is not defined"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 672, in run
+    self._callSetUp()
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 630, in _callSetUp
+    self.setUp()
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 50, in setUp
+    self.detector = MTCNN()
+NameError: name 'MTCNN' is not defined
+]]></error>
+	</testcase>
+</testsuite>

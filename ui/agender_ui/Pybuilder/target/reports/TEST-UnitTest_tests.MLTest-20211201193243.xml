@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211201193243" tests="2" file="UnitTest_tests.py" time="64.608" timestamp="2021-12-01T19:34:19" failures="0" errors="0" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_age" time="31.458" timestamp="2021-12-01T19:33:46"/>
+	<testcase classname="UnitTest_tests.MLTest" name="test_gender" time="33.150" timestamp="2021-12-01T19:34:19"/>
+</testsuite>

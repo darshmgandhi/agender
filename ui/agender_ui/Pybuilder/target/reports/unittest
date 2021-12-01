@@ -1,10 +1,33 @@
 
 Running tests...
 ----------------------------------------------------------------------
+F...........
+======================================================================
+FAIL [30.400s]: test_age (UnitTest_tests.MLTest) (i=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 65, in test_age
+    self.assertEqual(prediction, self.age[i])
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 912, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 1292, in assertMultiLineEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 753, in fail
+    raise self.failureException(msg)
+AssertionError: '81 - 90' != '21 - 30'
+- 81 - 90
+? ^    ^
++ 21 - 30
+? ^    ^
+
 
 ----------------------------------------------------------------------
-Ran 0 tests in 0.014s
+Ran 12 tests in 75.725s
 
-OK
+FAILED (failures=1)
 
 Generating XML reports...

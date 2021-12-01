@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211201185229" tests="3" file="UnitTest_tests.py" time="24.436" timestamp="2021-12-01T18:53:13" failures="0" errors="3" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=0)" time="0.000" timestamp="0001-01-01T00:00:00">
+		<error type="FileNotFoundError" message="[Errno 2] No such file or directory: 'IM/cropped_image.jpg'"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 60, in test_age
+    crop(b, self.images[i])
+  File "../login_signup\detectors.py", line 88, in crop
+    c.save(f"IM/cropped_image.jpg")
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\Image.py", line 2237, in save
+    fp = builtins.open(filename, "w+b")
+FileNotFoundError: [Errno 2] No such file or directory: 'IM/cropped_image.jpg'
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=1)" time="0.000" timestamp="0001-01-01T00:00:00">
+		<error type="FileNotFoundError" message="[Errno 2] No such file or directory: 'IM/cropped_image.jpg'"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 60, in test_age
+    crop(b, self.images[i])
+  File "../login_signup\detectors.py", line 88, in crop
+    c.save(f"IM/cropped_image.jpg")
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\Image.py", line 2237, in save
+    fp = builtins.open(filename, "w+b")
+FileNotFoundError: [Errno 2] No such file or directory: 'IM/cropped_image.jpg'
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=2)" time="24.436" timestamp="2021-12-01T18:53:13">
+		<error type="FileNotFoundError" message="[Errno 2] No such file or directory: 'IM/cropped_image.jpg'"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 60, in test_age
+    crop(b, self.images[i])
+  File "../login_signup\detectors.py", line 88, in crop
+    c.save(f"IM/cropped_image.jpg")
+  File "e:\niit\semester 7\capstone project ii\project\venv\lib\site-packages\PIL\Image.py", line 2237, in save
+    fp = builtins.open(filename, "w+b")
+FileNotFoundError: [Errno 2] No such file or directory: 'IM/cropped_image.jpg'
+]]></error>
+	</testcase>
+</testsuite>

@@ -26,51 +26,10 @@ import tensorflow as tf
 from django.templatetags.static import static
 import io
 import base64
+from .detectors import age_model, gender_model, contrast, face_detect, crop
 # import requests
 
 # Create your views here.
-
-def age_model():
-    prediction_age = ['0 - 5', '6 - 10', '11 - 15', '16 - 20', '21 - 30', '31 - 40', 
-                      '41 - 50', '51 - 60', '61 - 70', '71 - 80', '81 - 90', '90 above']
-    model = tf.keras.Sequential()
-    model.add(tf.keras.layers.Conv2D(64, 3, activation = 'relu', input_shape = (200, 200, 3)))
-    model.add(tf.keras.layers.MaxPool2D())
-    model.add(tf.keras.layers.Conv2D(128, 3, activation = 'relu'))
-    model.add(tf.keras.layers.MaxPool2D())
-    #model.add(tf.keras.layers.Conv2D(256, 3, activation = 'relu'))
-    #model.add(tf.keras.layers.MaxPool2D())
-    model.add(tf.keras.layers.Flatten())
-    model.add(tf.keras.layers.Dense(512, activation = 'relu'))
-    model.add(tf.keras.layers.Dense(256, activation = 'relu'))
-    model.add(tf.keras.layers.Dense(12, activation = 'softmax'))
-    #model.compile(optimizer = 'adam', loss = tf.losses.SparseCategoricalCrossentropy(from_logits = False), metrics = ['accuracy'])
-    model.load_weights('./models/checkpoint')
-    #print('Age:', model.trainable_weights)
-    return model, prediction_age
-
-
-def gender_model():
-    model = tf.keras.Sequential()
-    model.add(tf.keras.layers.Conv2D(64, 3, activation='relu', input_shape=(200, 200, 3)))
-    model.add(tf.keras.layers.MaxPool2D())
-    model.add(tf.keras.layers.Conv2D(128, 3, activation='relu'))
-    model.add(tf.keras.layers.MaxPool2D())
-    model.add(tf.keras.layers.Conv2D(256, 3, activation='relu'))
-    model.add(tf.keras.layers.MaxPool2D())
-    model.add(tf.keras.layers.Flatten())
-    model.add(tf.keras.layers.Dense(1024, activation='relu'))
-    model.add(tf.keras.layers.Dropout(0.1))
-    model.add(tf.keras.layers.Dense(512, activation='relu'))
-    model.add(tf.keras.layers.Dropout(0.1))
-    model.add(tf.keras.layers.Dense(512, activation='relu'))
-    model.add(tf.keras.layers.Dropout(0.1))
-    model.add(tf.keras.layers.Dense(2, activation='softmax'))
-    #model.compile(optimizer='sgd', loss=tf.losses.SparseCategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
-    model.load_weights('./models_gender/checkpoint')
-    #print('Gender:', model.trainable_weights)
-    return model
-
 
 model, prediction_age = age_model()
 model_gender = gender_model()
@@ -161,64 +120,6 @@ def logout(request):
     return redirect('login')
 
 
-def contrast(img):
-    # img = cv2.imread(filename)
-    Y = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    # print(np.array(img))
-
-    min = int(np.min(Y))
-    max = int(np.max(Y))
-    contrast = (max-min)/(max+min)
-    return contrast
-
-
-def face_detect(filename, faces, b):
-    data = pyplot.imread(filename)
-    # pyplot.imshow(data)
-    ax = pyplot.gca()
-
-    for face in faces:
-        x, y, width, height = face["box"]
-        box = (x, y, width, height)
-        b.append(box)
-        # print(b)
-        rect = Rectangle((x, y), width, height, fill=False, color="red")
-        ax.add_patch(rect)
-        # for key,value in face['keypoints'].items():
-        #   dot=Circle(value,radius=1.5,color="yellow")
-        #  ax.add_patch(dot)
-
-    # pyplot.show()
-
-
-def crop(b, filename):
-    img = Image.open(filename)
-    for bb in b:
-        box = bb
-        #print(box[0])
-        #print(box[1])
-        #print(box[2])
-        #print(box[3])
-        #print(box)
-        box = ((box[0] + box[2] // 2) - box[3] // 2, box[1], (box[0] + box[2] // 2) + box[3] // 2, box[3]+box[1])
-        c = img.crop(box)  # (left,upper,right,lower)
-        #print(box)
-        #print(c.size)
-        # pyplot.imshow(c)
-        c.save(f"IM/cropped_image.jpg")
-        downscale(c)
-
-
-def downscale(img):
-    # basewidth = 100
-    # wpercent = (basewidth/float(img.size[0]))
-    # print(wpercent)
-    # hsize = int((float(img.size[1])*float(wpercent)))
-    img5 = img.resize((200, 200), Image.ANTIALIAS)
-    img5.save("IM/resized_image.jpg")
-    # print(img5.size)
-
-
 @csrf_exempt
 @ login_required(login_url='/signup')
 def webcam(request):
@@ -226,7 +127,7 @@ def webcam(request):
         filename = './IMAGE/image.jpeg'
         with Image.open(io.BytesIO(base64.decodebytes(bytes(request.POST['img'].replace('data:image/jpeg;base64,', ''), "utf-8")))) as image:
             image.save(filename)
-        filename = './IMAGE/image1.jpeg'
+        #filename = './IMAGE/image1.jpeg'
         img = pyplot.imread(filename)
         thresh = 0.55
         b = []

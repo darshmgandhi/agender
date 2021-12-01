@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211201185421" tests="3" file="UnitTest_tests.py" time="29.521" timestamp="2021-12-01T18:55:08" failures="0" errors="3" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=0)" time="0.000" timestamp="0001-01-01T00:00:00">
+		<error type="NameError" message="name 'tf' is not defined"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 61, in test_age
+    test_image = tf.expand_dims(tf.io.decode_image(tf.io.read_file("IM/resized_image.jpg"), dtype=tf.float32), axis=0)
+NameError: name 'tf' is not defined
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=1)" time="0.000" timestamp="0001-01-01T00:00:00">
+		<error type="NameError" message="name 'tf' is not defined"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 61, in test_age
+    test_image = tf.expand_dims(tf.io.decode_image(tf.io.read_file("IM/resized_image.jpg"), dtype=tf.float32), axis=0)
+NameError: name 'tf' is not defined
+]]></error>
+	</testcase>
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=2)" time="29.521" timestamp="2021-12-01T18:55:08">
+		<error type="NameError" message="name 'tf' is not defined"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+  File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
+    yield
+  File "e:\niit\semester 7\capstone project ii\project\venv\agender\ui\agender_ui\pybuilder\src\unittest\python\UnitTest_tests.py", line 61, in test_age
+    test_image = tf.expand_dims(tf.io.decode_image(tf.io.read_file("IM/resized_image.jpg"), dtype=tf.float32), axis=0)
+NameError: name 'tf' is not defined
+]]></error>
+	</testcase>
+</testsuite>
