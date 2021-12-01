@@ -48,7 +48,7 @@ class MLTest(unittest.TestCase):
         self.model, self.prediction_age = age_model()
         self.model_gender = gender_model()
         self.images = ['../IMAGE/image11.jpeg', '../IMAGE/image12.jpeg', '../IMAGE/image13.jpeg']
-        self.age = ['0 - 5', '51 - 60', '31 - 40']
+        self.age = ['0 - 5', '21 - 30', '31 - 40']
         self.gender = ['Male', 'Female', 'Female']
         self.detector = MTCNN()
 
