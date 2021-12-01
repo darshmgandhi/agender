@@ -1,11 +1,13 @@
-
-Running tests...
-----------------------------------------------------------------------
-F...........
-======================================================================
-FAIL [40.638s]: test_age (UnitTest_tests.MLTest) (i=2)
-----------------------------------------------------------------------
-Traceback (most recent call last):
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.MLTest-20211202043705" tests="2" file="UnitTest_tests.py" time="75.626" timestamp="2021-12-02T04:39:10" failures="1" errors="0" skipped="0">
+	<testcase classname="UnitTest_tests.MLTest" name="test_gender" time="34.988" timestamp="2021-12-02T04:39:10"/>
+	<testcase classname="UnitTest_tests.MLTest" name="test_age (i=2)" time="40.638" timestamp="2021-12-02T04:38:35">
+		<failure type="AssertionError" message="'61 - 70' != '21 - 30'
+- 61 - 70
+? ^    ^
++ 21 - 30
+? ^    ^
+"><![CDATA[Traceback (most recent call last):
   File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 60, in testPartExecutor
     yield
   File "C:\Users\Nova\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 582, in subTest
@@ -24,10 +26,6 @@ AssertionError: '61 - 70' != '21 - 30'
 + 21 - 30
 ? ^    ^
 
-
-----------------------------------------------------------------------
-Ran 12 tests in 88.945s
-
-FAILED (failures=1)
-
-Generating XML reports...
+]]></failure>
+	</testcase>
+</testsuite>

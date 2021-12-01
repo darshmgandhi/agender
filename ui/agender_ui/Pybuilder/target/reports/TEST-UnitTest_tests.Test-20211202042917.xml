@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UnitTest_tests.Test-20211202042917" tests="10" file="UnitTest_tests.py" time="15.987" timestamp="2021-12-02T04:31:33" failures="0" errors="0" skipped="0">
+	<testcase classname="UnitTest_tests.Test" name="test1" time="14.228" timestamp="2021-12-02T04:31:31"/>
+	<testcase classname="UnitTest_tests.Test" name="test10" time="0.276" timestamp="2021-12-02T04:31:31"/>
+	<testcase classname="UnitTest_tests.Test" name="test2" time="0.150" timestamp="2021-12-02T04:31:31"/>
+	<testcase classname="UnitTest_tests.Test" name="test3" time="0.352" timestamp="2021-12-02T04:31:32"/>
+	<testcase classname="UnitTest_tests.Test" name="test4" time="0.241" timestamp="2021-12-02T04:31:32"/>
+	<testcase classname="UnitTest_tests.Test" name="test5" time="0.186" timestamp="2021-12-02T04:31:32"/>
+	<testcase classname="UnitTest_tests.Test" name="test6" time="0.369" timestamp="2021-12-02T04:31:32"/>
+	<testcase classname="UnitTest_tests.Test" name="test7" time="0.071" timestamp="2021-12-02T04:31:32"/>
+	<testcase classname="UnitTest_tests.Test" name="test8" time="0.024" timestamp="2021-12-02T04:31:32"/>
+	<testcase classname="UnitTest_tests.Test" name="test9" time="0.089" timestamp="2021-12-02T04:31:33"/>
+</testsuite>
