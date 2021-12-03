@@ -15,11 +15,29 @@ Our project "Agender" is a website where users can build forms and incorporate t
  - Verification Page
 
 ## How to run the server on your local machine:
-- Clone the repository in your local machine
-- Open project in a code editor (Visual studio code, atom, pycharm, etc)
-- Open terminal and run command "pip install -r requirements.txt"
-- Activate the virtual environment
-- At last run command "python manage.py runserver" to run server
+1. Download the docker-compose.yml file that has been uploaded.
+2. Make sure you have Docker and docker-compose installed on your machine.
+3. Navigate to the directory where you have downloaded the docker-compose.yml file and run the command
+   "docker-compose up -d".
+4. The project will take 3-4 minutes to start.
+5. Use any modern browser (Firefox, Chrome, etc) of your choice and navigate to "localhost:8000\signup".
+6. Create an account by entering a username, email, password (minimum 8 characters with at least 1 Uppercase character, 1 lower case character and 1 special character).
+7. Now click on login and enter you username and password.
+8. After logging, in you are presented with a dashboard (\new_page route) where you the following options: <br>
+
+   a. Form builder - Here you can build your custom forms and save them. We have a dedicated button to add camera verification field for gender and age detection.
+
+   b. Form Page - Here you can see the created forms and fill them. After clicking on submit, you will be taken to the gender and age verification (webcam) page. In this page you can click your photo, agree to the terms and conditions after which the gender and age verification will be done.
+
+   c. Logout - You can use this button to log out. 
+
+<b> *** Notes ***</b> <br>
+
+a. The container can take some time to boot up because of the Machine Learning models that have been used for gender and age verification. <br>
+
+b. You can only navigate to the dashboard (\new_page) if you are logged in. <br>
+
+c. There is a not homepage (\ route) so please use (\signup) or (\login) instead. <br>
 
 ## Contribution Guidelines:-
 Contributions are always welcome! Please ensure your pull request adheres to the following guidelines:
@@ -34,7 +52,7 @@ Contributions are always welcome! Please ensure your pull request adheres to the
    9. Make sure your text editor is set to remove trailing whitespace.
 
 ## Contributors
-- Darsh Gandhi - [Connect on Github](https://github.com/darshmgandhi)
+- Darsh Gandhi - [Connect on Github](https://github.com/darshmgandhi) 
 - Anoop Gupta - [Connect on Github](https://github.com/Anoop01234)
 - Muskan Goel - [Connect on Github](https://github.com/muskan-goel)
 - Kailash Karthik - [Connect on Github](https://github.com/KailashKS)
