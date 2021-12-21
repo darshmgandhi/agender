@@ -17,36 +17,42 @@ from djongo import models
 #         managed = False
 
 class Label(models.Model):
-	label_name = models.CharField(max_length=30)
-	class Meta:
-		abstract = True
+    label_name = models.CharField(max_length=30)
+
+    class Meta:
+        abstract = True
+
 
 class Field(models.Model):
-	#_id = models.ObjectIdField()
-	field_name = models.CharField(max_length = 30)
-	tag = models.CharField(max_length = 30)
-	label = models.ArrayField(
-		model_container = Label
-	)
-	# label = models.CharField(max_length = 30)
-	
-	class Meta:
-		abstract = True
+    #_id = models.ObjectIdField()
+    field_name = models.CharField(max_length=30)
+    tag = models.CharField(max_length=30)
+    label = models.ArrayField(
+        model_container=Label
+    )
+    # label = models.CharField(max_length = 30)
+
+    class Meta:
+        abstract = True
+
 
 class Form(models.Model):
-	name = models.CharField(max_length = 100)
-	username = models.CharField(max_length = 100)
-	fields = models.ArrayField(
-		model_container = Field
-	)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
+    fields = models.ArrayField(
+        model_container=Field
+    )
 
-TITLE_TYPE_CHOICES = (('mr','Mr'), ('mrs','Mrs'), ('miss','Miss'),)
-VEHICLE_TYPE_CHOICES = ( ('Bike','bike'), ('Car','car'), ('Cycle','cycle'))
+
+TITLE_TYPE_CHOICES = (('mr', 'Mr'), ('mrs', 'Mrs'), ('miss', 'Miss'),)
+VEHICLE_TYPE_CHOICES = (('Bike', 'bike'), ('Car', 'car'), ('Cycle', 'cycle'))
+
 
 class response(models.Model):
-	first_name= models.CharField(max_length=100)
-	last_name= models.CharField(max_length=100)
-	email= models.EmailField(max_length=100)
-	title = models.CharField(max_length=10, choices=TITLE_TYPE_CHOICES)
-	#image = models.ImageField(upload_to='IMAGE/')
-	#vehicle = models.CharField(max_length=50,widget=models.CheckboxSelectMultiple, choices=VEHICLE_TYPE_CHOICES)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    title = models.CharField(max_length=10, choices=TITLE_TYPE_CHOICES)
+    #image = models.ImageField(upload_to='IMAGE/')
+    #vehicle = models.CharField(max_length=50,widget=models.CheckboxSelectMultiple, choices=VEHICLE_TYPE_CHOICES)
