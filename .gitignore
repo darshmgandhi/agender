@@ -9,3 +9,4 @@ migrations/
 !migrations/__init__.py
 cropped_image*
 resized_image*
+venv_test/

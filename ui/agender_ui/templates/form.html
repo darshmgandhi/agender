@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
     <title>Form</title>
     <script></script>
@@ -27,60 +28,69 @@
 </style>
 
 <body>
-    <h1> Registration form </h1>
-    <form action="save_form" method="post">
-        <p>
-            <label>First name</label><br>
-            <input type="text" name="first_name">
-        </p>
-        <p>
-            <label>Last name</label><br>
-            <input type="text" name="last_name">
-        </p>
-        <p>
-            <label>Address</label><br>
-            <input type="email" name="email" required>
-        </p>
-        <p>
-            <label>Title</label><br>
-            <label>
-            <input type="radio" name="title" value="mr">
-            Mr
-          </label>
-            <label>
-            <input type="radio" name="title" value="mrs">
-            Mrs
-          </label>
-            <label>
-            <input type="radio" name="title" value="miss">
-            Miss
-          </label>
-        </p>
-        <p>
-            Image Validation
-            <a href="{% url 'webcam' %}">
-                <input type="button" value="Validate" id="btncheck">
-            </a>
-        </p>
-        <p>
-            Vehicle:
-            <label>
-            <input type="checkbox" name="Vehicle" value="car" id='vehicle'>
-            Car
-          </label>
-            <label>
-            <input type="checkbox" name="Vehicle" value="bike" id='vehicle'>
-            Bike
-          </label>
-            <label>
-            <input type="checkbox" name="Vehicle" value="cycle" id="vehicle">
-            Cycle
-          </label>
-        </p>
-        <p>
-            <button type="submit">Submit</button>
-        </p>
-    </form>
+    <h1>
+		{% for field in fields %}
+			{% if field.field_name == 'generator_title' %}
+				{% for i in field.label %}
+					{{i.label_name}}
+					<br><br>
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+	</h1>
+
+	{% for field in fields %}
+		{% if field.field_name != 'generator_title' %}
+			{% if field.tag == "label" %}
+				<strong><p>{{field.field_name}}</p></strong>
+			{% endif %}
+		{% endif %}
+
+
+		{% if field.tag == 'checkbox' %}
+			<strong><p>{{field.field_name}}</p></strong>
+			{% for l in field.label %}
+				<input class="form-check-input" type={{field.tag}} name={{field.field_name}}>
+				<label class="form-check-label" for={{l.label_name}}>{{l.label_name}}</label>
+				<br>
+			{% endfor %}
+		{% endif %}
+
+		{% if field.tag == 'radio' %}
+			<strong><p>{{field.field_name}}</p></strong>
+			{% for l in field.label %}
+				<input class="form-check-input" type={{field.tag}} name={{field.field_name}}>
+				<label class="form-check-label" for={{l.label_name}}>{{l.label_name}}</label>
+				<br>
+			{% endfor %}
+		{% endif %}
+
+		{% if field.tag == 'verify_image' %}
+			<strong><p>Enter Gender</p></strong>
+			<input class="form-check-input" type="radio" name="Gender">
+			<label class="form-check-label" for="male">Male</label>
+			<br>
+
+			<input class="form-check-input" type="radio" name="Gender">
+			<label class="form-check-label" for="female">Female</label>
+			<br><br>
+
+			<label for="age">Age:</label>
+			<input type="text" >
+			<br><br>
+			
+			<button class="btn btn-dark">Verify Image</button>
+			<br><br>
+			
+		{% endif %}
+
+		{% if field.tag == 'text' %}
+			<label for={{field.field_name}}>{{field.field_name}}</label>
+			<input type="text">
+		{% endif %}
+	{% endfor %}
+
+
 </body>
 
 </html>
