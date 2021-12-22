@@ -86,7 +86,7 @@
 
 		{% if field.tag == 'text' %}
 			<label for={{field.field_name}}>{{field.field_name}}</label>
-			<input type="text">
+			<input type="text" name={{field.field_name}}>
 		{% endif %}
 	{% endfor %}
 
