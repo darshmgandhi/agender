@@ -45,14 +45,15 @@ class Form(models.Model):
     )
 
 
-TITLE_TYPE_CHOICES = (('mr', 'Mr'), ('mrs', 'Mrs'), ('miss', 'Miss'),)
-VEHICLE_TYPE_CHOICES = (('Bike', 'bike'), ('Car', 'car'), ('Cycle', 'cycle'))
-
+# TITLE_TYPE_CHOICES = (('mr', 'Mr'), ('mrs', 'Mrs'), ('miss', 'Miss'),)
+# VEHICLE_TYPE_CHOICES = (('Bike', 'bike'), ('Car', 'car'), ('Cycle', 'cycle'))
 
 class response(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
-    title = models.CharField(max_length=10, choices=TITLE_TYPE_CHOICES)
-    #image = models.ImageField(upload_to='IMAGE/')
-    #vehicle = models.CharField(max_length=50,widget=models.CheckboxSelectMultiple, choices=VEHICLE_TYPE_CHOICES)
+    field = models.ArrayField(model_container=Field)
+
+# class response(models.Model):
+#     first_name = models.CharField(max_length=100)
+#     last_name = models.CharField(max_length=100)
+#     email = models.EmailField(max_length=100)
+#     title = models.CharField(max_length=10, choices=TITLE_TYPE_CHOICES)
+

@@ -1,4 +1,3 @@
-from os import name
 from django.urls import path
 from . import views
 
@@ -12,7 +11,7 @@ urlpatterns = [
     path('form/<int:id>', views.form, name='form'),
 	path('', views.new_page, name="new_page"),
     path('webcam', views.webcam, name='webcam'),
-    path('save_form', views.save_form, name = 'save_form'),
+    path('save_form/<int:id>', views.save_form, name = 'save_form'),
     path('save_formdata', views.save_formdata, name = 'save_formdata')
 
 ]

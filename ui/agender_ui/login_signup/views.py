@@ -169,7 +169,7 @@ def form(request, id):
 	form_stuff = Form.objects.get(id=id)
 	fields = form_stuff.fields
 	# print(f1)
-	return render(request, 'form.html', {'fields': fields})
+	return render(request, 'form.html', {'fields': fields,'fid':id})
 
 
 # @ login_required(login_url='/signup')
@@ -209,20 +209,31 @@ def save_formdata(request):
 	return redirect('new_page')
 
 @ csrf_exempt
-def save_form(request):
+def save_form(request,id):
 	if request.method == 'POST':
-		# first_name = form.cleaned_data['first_name']
-		# last_name = form.cleaned_data['last_name']
-		# email = form.cleaned_data['email']
-		# p = response(first_name=first_name, last_name=last_name, email=email)
+		# first_name = request.POST['first_name']
+		# last_name = request.POST['last_name']
+		# email = request.POST['email']
+		# title = request.POST['title']
+		# p = response(first_name=first_name, last_name=last_name, email=email, title=title)
 		# p.save()
-		first_name = request.POST['first_name']
-		last_name = request.POST['last_name']
-		email = request.POST['email']
-		title = request.POST['title']
-		#vehicle = request.POST['vehicle']
-		#print(request.POST['first_name'])
-		p = response(first_name=first_name, last_name=last_name, email=email, title=title)
-		p.save()
+		fields=[]
+		labels_ = []
 
-	return render(request, 'home.html', {'form': p})
+		form=response()	
+		print(request.POST)
+
+		for i in request.POST:
+			#print(i)
+			values = request.POST.getlist(i)
+			#print(values)
+			tag=','.join(values)
+			fields.append({'field_name': i, 'tag': tag,'label':labels_})
+			#print(tag)
+		#print(fields)
+
+			#fields.append({'field_name':i,'tag':tag,'label':[value]})
+		form.field = fields
+
+		form.save()
+		return render(request, 'home.html')

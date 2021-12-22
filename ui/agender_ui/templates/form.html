@@ -28,6 +28,7 @@
 </style>
 
 <body>
+	<form method="POST" action="/save_form/{{fid}}">
     <h1>
 		{% for field in fields %}
 			{% if field.field_name == 'generator_title' %}
@@ -50,7 +51,7 @@
 		{% if field.tag == 'checkbox' %}
 			<strong><p>{{field.field_name}}</p></strong>
 			{% for l in field.label %}
-				<input class="form-check-input" type={{field.tag}} name={{field.field_name}}>
+				<input class="form-check-input" type={{field.tag}} name={{field.field_name}} value={{l.label_name}}>
 				<label class="form-check-label" for={{l.label_name}}>{{l.label_name}}</label>
 				<br>
 			{% endfor %}
@@ -59,7 +60,7 @@
 		{% if field.tag == 'radio' %}
 			<strong><p>{{field.field_name}}</p></strong>
 			{% for l in field.label %}
-				<input class="form-check-input" type={{field.tag}} name={{field.field_name}}>
+				<input class="form-check-input" type={{field.tag}} name={{field.field_name}} value={{l.label_name}}>
 				<label class="form-check-label" for={{l.label_name}}>{{l.label_name}}</label>
 				<br>
 			{% endfor %}
@@ -67,28 +68,29 @@
 
 		{% if field.tag == 'verify_image' %}
 			<strong><p>Enter Gender</p></strong>
-			<input class="form-check-input" type="radio" name="Gender">
+			<input class="form-check-input" type="radio" name="Gender" value="Male">
 			<label class="form-check-label" for="male">Male</label>
 			<br>
 
-			<input class="form-check-input" type="radio" name="Gender">
+			<input class="form-check-input" type="radio" name="Gender" value="Female">
 			<label class="form-check-label" for="female">Female</label>
 			<br><br>
 
 			<label for="age">Age:</label>
-			<input type="text" >
+			<input type="text" name="age">
 			<br><br>
 			
-			<button class="btn btn-dark">Verify Image</button>
+			<button class="btn btn-dark" type="submit">Verify Image</button>
 			<br><br>
 			
 		{% endif %}
 
 		{% if field.tag == 'text' %}
 			<label for={{field.field_name}}>{{field.field_name}}</label>
-			<input type="text">
+			<input type="text" name={{field.field_name}}>
 		{% endif %}
 	{% endfor %}
+</form>
 
 
 </body>
