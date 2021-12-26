@@ -8,6 +8,7 @@ from matplotlib.patches import Rectangle
 from django.conf.urls import url
 from django.shortcuts import render, redirect
 from .models import *
+from .models import response as resp
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import *
@@ -112,7 +113,18 @@ def login(request):
 
 @ login_required(login_url='/signup')
 def new_page(request):
-	return render(request, 'home.html')
+	dashboard = Form.objects.filter(username = str(request.user))
+	form_ids = []
+	form_names = []
+	for i in dashboard:
+		fields_d = i.fields
+		form_ids.append(i.id)
+		for j in fields_d:
+			if j['field_name'] == 'generator_title':
+				form_names.append(j['label'][0]['label_name'])
+				break
+	dash_data = zip(form_names, form_ids)
+	return render(request, 'UserDashboard.html', {'dash_data': dash_data})
 
 
 def logout(request):
@@ -121,8 +133,7 @@ def logout(request):
 
 
 @csrf_exempt
-@ login_required(login_url='/signup')
-def webcam(request):
+def webcam(request, id):
 	if request.method == 'POST':
 		filename = './IMAGE/image.jpeg'
 		with Image.open(io.BytesIO(base64.decodebytes(bytes(request.POST['img'].replace('data:image/jpeg;base64,', ''), "utf-8")))) as image:
@@ -154,7 +165,7 @@ def webcam(request):
 			message = "Low Contrast Image. Please change you surroundings."
 	else:
 		message = ''
-	return render(request, 'webcam.html', {'message': message})
+	return render(request, 'webcam.html', {'message': message, 'id': id})
 
 
 
@@ -162,13 +173,21 @@ def webcam(request):
 def builder(request):
 	return render(request, 'builder.html')
 
-
-@ login_required(login_url='/signup')
+@csrf_exempt
 def form(request, id):
 	# print(request.user)
 	form_stuff = Form.objects.get(id=id)
 	fields = form_stuff.fields
+	if request.method == 'GET':
+		for i in fields:
+			if i['field_name'] == 'verify_image':
+				return redirect('webcam', id = id)
 	# print(f1)
+	if request.method == 'POST':
+		predic = request.POST['prediction']
+		predic = predic.replace("Predicted Age: ", "").replace(" Predicted Gender: ", "").split(',')
+		print('Hello', predic)
+		return render(request, 'form.html', {'fields': fields,'fid':id, 'verified_age': predic[0], 'verified_gender': predic[1]})
 	return render(request, 'form.html', {'fields': fields,'fid':id})
 
 
@@ -234,6 +253,28 @@ def save_form(request,id):
 
 			#fields.append({'field_name':i,'tag':tag,'label':[value]})
 		form.field = fields
-
+		form.form_id = id
 		form.save()
 		return render(request, 'home.html')
+
+def download(request, id):
+	frm = Form.objects.get(id=id)
+	frm_field = frm.fields
+	name = ''
+	for j in frm_field:
+		if j['field_name'] == 'generator_title':
+			name = j['label'][0]['label_name']
+			break
+	data_down = resp.objects.filter(form_id = id)
+	csv = ''
+	for i in data_down[0].field:
+		csv += '"' + i['field_name'] + '",'
+	csv = csv.rstrip(',') + '\n'
+	for d in data_down:
+		fields = d.field
+		for i in fields:
+			csv += '"' + i['tag'] + '",'
+		csv = csv.rstrip(',') + '\n'
+	response = HttpResponse(csv, content_type = 'text/csv')
+	response['Content-Disposition'] = f'attachment; filename="{name}.csv"'
+	return response

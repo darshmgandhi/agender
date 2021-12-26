@@ -67,7 +67,7 @@
         <canvas id="canvas" width="300" height="230" padding="10px"></canvas>
     </div>
     <div id="second">
-        <form id="form" method="POST" action="webcam">
+        <form id="form" method="POST" action="/webcam/{{id}}">
             <ol align="left">
                 <ol font-weight="20px"> Instructions: </ol><br>
                 <LI> Ensure your Face is well-lit – Avoid low light or light source behind you, </LI>
@@ -95,15 +95,21 @@
 
             </ol>
         </form>
+        <form id="form2"  action="/form/{{id}}" method="POST">
+            <input type="text" value="{{message}}" name="prediction" hidden>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 </body>
 <script>
     $(function() {
         var chk = $('#check');
         var btn = $('#btncheck');
+        var btn2 = $('#btncheck2');
 
         chk.on('change', function() {
-            btn.prop("disabled", !this.checked); //true: disabled, false: enabled
+            btn.prop("disabled", !this.checked);
+            btn2.prop("disabled", !this.checked); //true: disabled, false: enabled
         }).trigger('change'); //page load trigger event
     });
     let camera_button = document.querySelector("#start-camera");

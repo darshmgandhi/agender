@@ -80,7 +80,8 @@
 			<input type="text" name="age">
 			<br><br>
 			
-			<button class="btn btn-dark" type="submit">Verify Image</button>
+			<input type="text" name="verified_age" value="{{verified_age}}" hidden>
+			<input type="text" name="verified_gender" value="{{verified_gender}}" hidden>
 			<br><br>
 			
 		{% endif %}
@@ -89,7 +90,10 @@
 			<label for={{field.field_name}}>{{field.field_name}}</label>
 			<input type="text" name={{field.field_name}}>
 		{% endif %}
+
 	{% endfor %}
+	
+	<button class="btn btn-dark" type="submit">Submit</button>
 </form>
 
 

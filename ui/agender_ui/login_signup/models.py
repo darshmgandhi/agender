@@ -49,6 +49,7 @@ class Form(models.Model):
 # VEHICLE_TYPE_CHOICES = (('Bike', 'bike'), ('Car', 'car'), ('Cycle', 'cycle'))
 
 class response(models.Model):
+    form_id = models.IntegerField(default = 0)
     field = models.ArrayField(model_container=Field)
 
 # class response(models.Model):

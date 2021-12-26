@@ -9,8 +9,9 @@ urlpatterns = [
     #path('image_process', views.image_process, name="image_process"),
     path('builder', views.builder, name='builder'),
     path('form/<int:id>', views.form, name='form'),
+    path('download/<int:id>', views.download, name='download'),
 	path('', views.new_page, name="new_page"),
-    path('webcam', views.webcam, name='webcam'),
+    path('webcam/<int:id>', views.webcam, name='webcam'),
     path('save_form/<int:id>', views.save_form, name = 'save_form'),
     path('save_formdata', views.save_formdata, name = 'save_formdata')
 
