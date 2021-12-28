@@ -278,3 +278,8 @@ def download(request, id):
 	response = HttpResponse(csv, content_type = 'text/csv')
 	response['Content-Disposition'] = f'attachment; filename="{name}.csv"'
 	return response
+
+def form_delete(request, id):
+	resp.objects.filter(form_id = id).delete()
+	Form.objects.get(id = id).delete()
+	return redirect('new_page')

@@ -25,6 +25,7 @@
 						      <th>Form Name</th>
 						      <th>Copy Link</th>
 							  <th>Download Link</th>
+							  <th>Delete Form</th>
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -34,6 +35,7 @@
 						      <td> <a href="#"> {{name}} </a></td>
 						      <td><a href="#"  onclick="navigator.clipboard.writeText('http:\/\/127.0.0.1:8000/form/{{id}}')">Copy to Clipboard</a></td>
 							  <td><a href="/download/{{id}}"> Download Responses </a></td>
+							  <td><a href="/form_delete/{{id}}">Delete Form</a></td>
 						    </tr>
 							{% endfor %}
 						  </tbody>
