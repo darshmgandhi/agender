@@ -25,16 +25,22 @@
 						      <th>Form Name</th>
 						      <th>Copy Link</th>
 							  <th>Download Link</th>
+							  <th>Activate/Deactivate</th>
 							  <th>Delete Form</th>
 						    </tr>
 						  </thead>
 						  <tbody>
-							  {% for name, id in dash_data %}
+							  {% for name, id, activated in dash_data %}
 						    <tr>
 						      <th scope="row">{{forloop.counter}}</th>
-						      <td> <a href="#"> {{name}} </a></td>
+						      <td> <a href="#" {% if not activated %} style="color: red;" {% else %} style="color: green;" {% endif %}> {{name}} </a></td>
 						      <td><a href="#"  onclick="navigator.clipboard.writeText('http:\/\/127.0.0.1:8000/form/{{id}}')">Copy to Clipboard</a></td>
 							  <td><a href="/download/{{id}}"> Download Responses </a></td>
+							  {% if activated %}
+							  	<td><a href="/form_activation/{{id}}"> Deactivate </a></td>
+							  {% else %}
+							  	<td><a href="/form_activation/{{id}}"> Activate </a></td>
+							  {% endif %}
 							  <td><a href="/form_delete/{{id}}">Delete Form</a></td>
 						    </tr>
 							{% endfor %}

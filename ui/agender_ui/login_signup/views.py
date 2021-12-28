@@ -1,4 +1,4 @@
-from matplotlib import pyplot
+from matplotlib import is_interactive, pyplot
 import numpy as np
 import cv2
 from PIL import Image
@@ -116,14 +116,16 @@ def new_page(request):
 	dashboard = Form.objects.filter(username = str(request.user))
 	form_ids = []
 	form_names = []
+	is_activated = []
 	for i in dashboard:
 		fields_d = i.fields
 		form_ids.append(i.id)
+		is_activated.append(i.activated)
 		for j in fields_d:
 			if j['field_name'] == 'generator_title':
 				form_names.append(j['label'][0]['label_name'])
 				break
-	dash_data = zip(form_names, form_ids)
+	dash_data = zip(form_names, form_ids, is_activated)
 	return render(request, 'UserDashboard.html', {'dash_data': dash_data})
 
 
@@ -177,6 +179,8 @@ def builder(request):
 def form(request, id):
 	# print(request.user)
 	form_stuff = Form.objects.get(id=id)
+	if not form_stuff.activated:
+		return HttpResponse('<h1>This form has been deactivated by the creator.</h1>')
 	fields = form_stuff.fields
 	if request.method == 'GET':
 		for i in fields:
@@ -282,4 +286,10 @@ def download(request, id):
 def form_delete(request, id):
 	resp.objects.filter(form_id = id).delete()
 	Form.objects.get(id = id).delete()
+	return redirect('new_page')
+
+def form_activation(request, id):
+	form = Form.objects.get(id = id)
+	form.activated = not form.activated
+	form.save()
 	return redirect('new_page')

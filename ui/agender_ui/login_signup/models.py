@@ -40,6 +40,7 @@ class Form(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
+    activated = models.BooleanField(default = True)
     fields = models.ArrayField(
         model_container=Field
     )

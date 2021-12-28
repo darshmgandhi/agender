@@ -5,9 +5,9 @@ __pycache__/
 .RData
 .Ruserdata
 *checkpoint*
-!migrations/
-migrations/*
-!migrations/__init__.py
+!ui/agender_ui/login_signup/migrations/
+ui/agender_ui/login_signup/migrations/*
+!ui/agender_ui/login_signup/migrations/__init__.py
 cropped_image*
 resized_image*
 venv_test/
